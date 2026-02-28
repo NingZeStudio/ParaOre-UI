@@ -10,22 +10,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   document.body.classList.add('no-dark-mode');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const mainScrollView = document.querySelector('.main_scroll_view.with_sidebar');
-  if (mainScrollView) {
-    window.addEventListener('resize', () => {
-      mainScrollView.classList.add('animate');
-    });
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const headerLogo = document.querySelector('.header_logo');
-  if (headerLogo) {
-    headerLogo.addEventListener('click', () => scrollToTop());
-  }
-});
-
 let isNavigating = false;
 
 export function ifNavigating(way: string, url: string): void {
@@ -61,22 +45,4 @@ export function openLink(url: string): void {
 
 export function launchApplication(deeplink: string): void {
   window.location.assign(deeplink);
-}
-
-export function scrollToTop(): void {
-  if (window.mainScrollContainer) {
-    window.mainScrollContainer.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
-}
-
-export function toTop(): void {
-  if (window.mainScrollContainer) {
-    window.mainScrollContainer.scrollTo({
-      top: 0,
-      behavior: 'instant'
-    });
-  }
 }

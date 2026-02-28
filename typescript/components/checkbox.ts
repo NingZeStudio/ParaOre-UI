@@ -2,15 +2,12 @@ import { rootPath } from '../types';
 
 export class CustomCheckbox extends HTMLElement {
   beforeToggle: ((element: HTMLElement) => boolean) | null = null;
+  isCheckboxOn: boolean = false;
+  isCheckboxDisabled: boolean = false;
 
   constructor() {
     super();
     this.render();
-
-    const checkbox = this.querySelector('input[type="checkbox"]');
-    if (checkbox) {
-      checkbox.addEventListener('change', () => this.toggleCheckbox());
-    }
   }
 
   static get observedAttributes(): string[] {
@@ -22,28 +19,38 @@ export class CustomCheckbox extends HTMLElement {
   }
 
   attributeChangedCallback(): void {
-    this.render();
+    this.updateRender();
     setTimeout(() => window.updateFocusableElements?.(), 10);
   }
 
   render(): void {
-    const active = this.getAttribute('active') || 'off';
     const status = this.getAttribute('status') || 'disabled';
-    const isDisabled = status !== 'enabled';
-    const isOn = active === 'on';
+    this.isCheckboxDisabled = status !== 'enabled';
+    this.isCheckboxOn = this.getCheckboxValue() === 'on';
 
     this.innerHTML = `
-      <label class="custom-checkbox-label">
-        <div class="custom-checkbox ${isOn ? 'on' : 'off'} ${isDisabled ? 'disabled' : 'enabled'}">
-          <input type="checkbox" ${isOn ? 'checked' : ''} ${isDisabled ? 'disabled' : ''}>
-          <span class="checkmark"></span>
+      <div class="switch_content">
+        <div class="switch ${this.isCheckboxOn ? 'on' : 'off'} ${this.isCheckboxDisabled ? 'disabled_switch' : 'normal_switch'}">
+          <div class="switch_style left"></div>
+          <div class="switch_style right"></div>
+          <div class="switch_slider"></div>
         </div>
-      </label>
+      </div>
     `;
 
-    const checkbox = this.querySelector('input[type="checkbox"]');
-    if (checkbox) {
-      checkbox.addEventListener('change', () => this.toggleCheckbox());
+    this.bindEvents();
+  }
+
+  updateRender(): void {
+    this.isCheckboxOn = this.getCheckboxValue() === 'on';
+    this.isCheckboxDisabled = this.getAttribute('status') !== 'enabled';
+
+    const switchElement = this.querySelector('.switch');
+    if (switchElement) {
+      switchElement.classList.toggle('on', this.isCheckboxOn);
+      switchElement.classList.toggle('off', !this.isCheckboxOn);
+      switchElement.classList.toggle('disabled_switch', this.isCheckboxDisabled);
+      switchElement.classList.toggle('normal_switch', !this.isCheckboxDisabled);
     }
   }
 
@@ -61,31 +68,49 @@ export class CustomCheckbox extends HTMLElement {
     return true;
   }
 
-  toggleCheckbox(): void {
-    if (this.getAttribute('status') !== 'enabled') return;
-    if (!this.shouldAllowToggle()) return;
+  bindEvents(): void {
+    const switchElement = this.querySelector('.switch');
+    const switchSlider = this.querySelector('.switch_slider');
 
-    const isChecked = this.getAttribute('active') === 'on';
-    const checkboxData = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
+    if (!this.isCheckboxDisabled && switchElement && switchSlider) {
+      const handleClick = (): void => {
+        if (!this.shouldAllowToggle()) return;
+        this.isCheckboxOn = !this.isCheckboxOn;
+        this.updateCheckboxState(this.isCheckboxOn);
+      };
 
-    if (isChecked) {
-      this.setAttribute('active', 'off');
-      if (this.id === 'neverShowIn15Days') {
-        localStorage.removeItem(`(${rootPath}/)neverShowIn15Days`);
+      switchElement.addEventListener('click', handleClick);
+    }
+  }
+
+  updateCheckboxState(isOn: boolean): void {
+    this.setAttribute('active', isOn ? 'on' : 'off');
+    const switchElement = this.querySelector('.switch');
+    const switchSlider = this.querySelector('.switch_slider');
+
+    switchElement?.classList.toggle('on', isOn);
+    switchElement?.classList.toggle('off', !isOn);
+
+    const checkboxValues = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
+    checkboxValues[this.id] = isOn ? 'on' : 'off';
+    localStorage.setItem(`(${rootPath}/)checkbox_value`, JSON.stringify(checkboxValues));
+
+    if (switchSlider) {
+      if (isOn) {
+        switchSlider.classList.add('switch_bounce_left');
+        switchSlider.classList.remove('switch_bounce_right');
       } else {
-        checkboxData[this.id] = 'off';
+        switchSlider.classList.add('switch_bounce_right');
+        switchSlider.classList.remove('switch_bounce_left');
       }
-    } else {
-      this.setAttribute('active', 'on');
-      if (this.id === 'neverShowIn15Days') {
-        localStorage.setItem(`(${rootPath}/)neverShowIn15Days`, Date.now().toString());
-      } else {
-        checkboxData[this.id] = 'on';
-      }
+
+      setTimeout(() => {
+        switchSlider.classList.remove('switch_bounce_left');
+        switchSlider.classList.remove('switch_bounce_right');
+      }, 350);
     }
 
-    localStorage.setItem(`(${rootPath}/)checkbox_value`, JSON.stringify(checkboxData));
-    this.render();
+    this.updateRender();
 
     const checkboxClickEvent = new CustomEvent('checkbox-click', {
       bubbles: true,
@@ -94,14 +119,17 @@ export class CustomCheckbox extends HTMLElement {
     this.dispatchEvent(checkboxClickEvent);
   }
 
-  restoreState(): void {
-    const checkboxData = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
-    const state = checkboxData[this.id];
-
-    if (state) {
-      if (this.id === 'neverShowIn15Days') return;
-      this.setAttribute('active', state);
+  getCheckboxValue(): string {
+    const checkboxValues = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
+    if (this.id in checkboxValues) {
+      return checkboxValues[this.id];
     }
+    return this.getAttribute('active') || 'off';
+  }
+
+  restoreState(): void {
+    const state = this.getCheckboxValue();
+    this.isCheckboxOn = state === 'on';
   }
 }
 

@@ -1,9 +1,5 @@
 <div align="center">
 
-<b>我们仍在开发中，暂时不要使用！</b>  
-<b>我们仍在开发中，暂时不要使用！</b>  
-<b>我们仍在开发中，暂时不要使用！</b>  
-
 # ParaOre-UI
 
 ### A Sass/CSS component library based on the Mojang OreUI design language
@@ -18,7 +14,7 @@
 ---
 
 > [!CAUTION]
-> **法律风险提示**：我们目前已知的是 Mojang 开源了 OreUI 的状态管理，并不知道 OreUI 样式本身版权状态，此组件库可能存在版权法律问题，**请谨慎使用！**
+> **法律风险提示**：Mojang 开源了 OreUI 的状态管理代码，但 OreUI 样式本身的版权状态尚不明确。此组件库可能存在版权法律问题，**请谨慎使用！**
 
 ---
 
@@ -32,19 +28,20 @@ npm install @ningze/paraore-ui
 
 ### Usage
 
+#### CSS
 ```html
 <link rel="stylesheet" href="node_modules/@ningze/paraore-ui/dist/paraore-ui.css">
 ```
 
+#### Sass
 ```scss
 @use '@ningze/paraore-ui';
 ```
 
-### TypeScript Usage
-
+#### TypeScript/JavaScript
 ```html
 <script type="module">
-  import { CustomButton, CustomCheckbox, showModal } from '@ningze/paraore-ui/dist/js/paraore-ui.js';
+  import { showModal, hideModal, scrollToTop, openLink } from '@ningze/paraore-ui/dist/js/paraore-ui.js';
 </script>
 ```
 
@@ -58,6 +55,7 @@ npm run build:dev    # Build CSS + JS (development with source maps)
 npm run dev-css      # Build CSS with source maps
 npm run dev-js       # Build JS with source maps
 npm run watch        # Watch mode for Sass
+npm run lint         # ESLint check
 ```
 
 ---
@@ -68,11 +66,12 @@ npm run watch        # Watch mode for Sass
 
 | Component | Description |
 |-----------|-------------|
-| Buttons | `.btn`, `.normal_btn`, `.green_btn`, `.red_btn` |
+| Buttons | `.btn`, `.normal_btn`, `.green_btn`, `.red_btn`, `.auto_width_btn` |
 | Checkbox | `.custom-checkbox` (pure CSS with CSS checkmark) |
 | Radio | `.custom-radio` (pure CSS) |
 | Dropdown | `<custom-dropdown>` |
 | Scrollbar | `<custom-scrollbar>` |
+| Sidebar | `<display-sidebar>`, `.sidebar_btn`, `.sidebar_nav` |
 | Banner | `.banner` |
 | Badge | `.badge` |
 | Divider | `<divider>`, `<line>` |
@@ -91,13 +90,16 @@ npm run watch        # Watch mode for Sass
 |-----------|-------------|
 | CustomButton | `<custom-button>` Web Component |
 | CustomCheckbox | `<custom-checkbox>` Web Component |
+| CustomRadio | `<custom-radio>` Web Component |
 | CustomDropdown | `<custom-dropdown>` Web Component |
 | CustomSlider | `<custom-slider>` Web Component |
 | CustomSwitch | `<custom-switch>` Web Component |
+| CustomScrollbar | `<custom-scrollbar>` Web Component |
 | TextField | `<text-field>` Web Component |
+| DisplaySidebar | `<display-sidebar>` Web Component |
 | Modal | `showModal()`, `hideModal()` functions |
-| Scroll | Custom scrollbar logic |
-| Utils | `ifNavigating()`, `openLink()`, `scrollToTop()`, etc. |
+| Scroll | Custom scrollbar logic, `scrollToTop()`, `toTop()` |
+| Utils | `ifNavigating()`, `openLink()`, `launchApplication()` |
 
 ---
 
@@ -106,26 +108,26 @@ npm run watch        # Watch mode for Sass
 ```
 ParaOre-UI/
 ├── sass/
-│   ├── base/
-│   ├── components/
-│   ├── layout/
-│   ├── utilities/
-│   └── paraore-ui.scss
+│   ├── base/              # Variables, mixins, reset
+│   ├── components/        # Button, checkbox, sidebar, modal, etc.
+│   ├── layout/            # Header, main layout
+│   ├── utilities/         # Helpers
+│   └── paraore-ui.scss    # Main entry
 ├── typescript/
-│   ├── components/
+│   ├── components/        # Web Components
 │   ├── types.ts
 │   ├── global.d.ts
-│   ├── public_script.ts
+│   ├── public_script.ts   # Utility functions
 │   ├── load.ts
-│   └── index.ts
-├── dist/
-├── fonts/
-├── images/
-├── example/
-│   └── index.html
-├── USAGE.md
+│   └── index.ts           # Main entry
+├── dist/                  # Built files
+├── fonts/                 # Custom fonts
+├── images/                # Image assets
+├── example/               # Demo pages
+├── USAGE.md               # Usage guide
 ├── package.json
 ├── tsconfig.json
+├── eslint.config.js
 └── README.md
 ```
 

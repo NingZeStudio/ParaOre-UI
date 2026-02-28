@@ -3,6 +3,8 @@ export * from './public_script';
 export * from './components/scroll';
 export * from './components/button';
 export * from './components/checkbox';
+export * from './components/radio';
+export * from './components/sidebar';
 export * from './components/dropdown';
 export * from './components/modal';
 export * from './components/slider';

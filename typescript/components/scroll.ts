@@ -178,6 +178,11 @@ function bindScrollEvents(
     showScroll(customScrollbar);
   }, 100);
 
+  // Handle wheel events on the container for immediate scroll response
+  container.addEventListener('wheel', () => {
+    throttledUpdateAndShowScroll();
+  }, { passive: true });
+
   customScrollbar.addEventListener('wheel', (e) => {
     const delta = e.deltaY > 0 ? 10 : -10;
     container.scrollTop += delta;
@@ -249,4 +254,28 @@ export function getMainHandleScroll(): () => void {
 if (typeof window !== 'undefined') {
   (window as any).mainScrollContainer = mainScrollContainer;
   (window as any).mainHandleScroll = getMainHandleScroll();
+}
+
+/**
+ * 平滑滚动到顶部
+ */
+export function scrollToTop(): void {
+  if (window.mainScrollContainer) {
+    window.mainScrollContainer.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+}
+
+/**
+ * 立即滚动到顶部
+ */
+export function toTop(): void {
+  if (window.mainScrollContainer) {
+    window.mainScrollContainer.scrollTo({
+      top: 0,
+      behavior: 'instant'
+    });
+  }
 }

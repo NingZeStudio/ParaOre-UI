@@ -1,0 +1,164 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// ============================================
+// 侧边栏组件样式
+// ============================================
+
+// 侧边栏容器
+display-sidebar {
+  background-color: $color-background;
+  border-right: $border-width-sm solid $color-border-dark;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform $transition-normal;
+  width: $sidebar-width;
+  z-index: 100;
+
+  // 默认隐藏
+  transform: translateX(-100%);
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+// 侧边栏头部
+.sidebar_header {
+  align-items: center;
+  display: flex;
+  height: $header-height;
+  justify-content: space-between;
+  padding: 0 $spacing-lg;
+  border-bottom: $border-width-sm solid $color-border-dark;
+}
+
+.sidebar_title {
+  color: $color-text-primary;
+  font-size: $font-size-base;
+  font-weight: bold;
+}
+
+// 侧边栏内容区域
+.sidebar_content {
+  height: calc(100% - #{$header-height});
+  overflow-y: auto;
+  padding: $spacing-md;
+  position: relative;
+  width: 100%;
+}
+
+// 侧边栏导航
+.sidebar_nav {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-sm 0;
+}
+
+a.sidebar_nav_link {
+  box-shadow: none;
+  color: $color-text-primary;
+  display: block;
+  font-size: $font-size-base;
+  padding: $spacing-md $spacing-lg;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &.active {
+    background-color: transparent;
+    color: $color-btn-green;
+  }
+}
+
+// 侧边栏功能按钮
+.sidebar_btn {
+  background-color: $color-background;
+  border: $border-width-sm solid $color-border-dark;
+  box-shadow: inset -1px -1px $color-border-dark, inset 1px 1px $color-border-dark, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
+  color: $color-text-primary;
+  height: $btn-height;
+  margin: $spacing-sm;
+  padding-bottom: $spacing-xs;
+  width: auto;
+  min-width: 140px;
+
+  &:hover,
+  &:active {
+    background-color: #67686A;
+    border: $border-width-sm solid $color-border-white;
+    box-shadow: unset;
+  }
+}
+
+// 侧边栏内的 divider 样式修正
+.sidebar_content divider {
+  margin: $spacing-sm 0;
+  width: calc(100% - #{$spacing-md * 2});
+}
+
+// 侧边栏遮罩层
+.sidebar-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+
+  &.visible {
+    display: block;
+  }
+}
+
+// ============================================
+// 响应式布局
+// ============================================
+
+// 大屏幕（≥1200px）：侧边栏持久显示
+@include for-large-screen {
+  display-sidebar.persistent {
+    transform: translateX(0);
+
+    .sidebar_header {
+      display: none;
+    }
+
+    .sidebar_content {
+      height: 100%;
+    }
+  }
+
+  .main_scroll_view.with_sidebar {
+    margin-left: $sidebar-width;
+    width: calc(100% - $sidebar-width);
+  }
+
+  .sidebar_toggle_btn {
+    display: none;
+  }
+}
+
+// 小屏幕（<1200px）：侧边栏默认隐藏，通过按钮切换
+@media screen and (max-width: $breakpoint-lg) {
+  display-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main_scroll_view.with_sidebar {
+    margin-left: 0;
+    width: 100%;
+  }
+}

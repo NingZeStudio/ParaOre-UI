@@ -67,25 +67,12 @@ button {
   width: $icon-width-sm;
 }
 
-.sidebar_btn {
-  background-color: $color-background;
-  border: $border-width-sm solid #131313;
-  box-shadow: inset -1px -1px $color-border-dark, inset 1px 1px $color-border-dark, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
-  color: $color-text-primary;
-  height: $btn-height;
-  margin: $spacing-sm;
-  padding-bottom: $spacing-xs;
-  width: $btn-width-xl;
-
-  &:hover,
-  &:active {
-    background-color: #67686A;
-    border: $border-width-sm solid $color-border-white;
-    box-shadow: unset;
-    height: $btn-height;
-    margin: $spacing-sm;
-    padding-bottom: $spacing-xs;
-  }
+// 基于内容宽度的按钮
+.auto_width_btn {
+  width: auto;
+  min-width: $btn-width-xs;
+  padding-left: $spacing-lg;
+  padding-right: $spacing-lg;
 }
 
 .btn_group {

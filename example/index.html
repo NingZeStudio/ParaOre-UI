@@ -26,10 +26,6 @@
             gap: 10px;
             margin-bottom: 10px;
         }
-        .demo-label {
-            color: #FFFFFF;
-            min-width: 80px;
-        }
         /* Modal close button X symbol */
         .close-icon {
             color: #FFFFFF;
@@ -44,20 +40,51 @@
         .pop_area, pop_area {
             z-index: 9999 !important;
         }
+        /* Hide sidebar close button on PC (large screen) */
+        @media screen and (min-width: 1200px) {
+            #btn_close_sidebar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <display-sidebar id="sidebar">
+        <div class="sidebar_header">
+            <span class="sidebar_title">ParaOre-UI</span>
+        </div>
+        <div class="sidebar_content">
+            <nav class="sidebar_nav">
+                <a href="#" class="sidebar_nav_link active">Home</a>
+                <a href="#" class="sidebar_nav_link">Components</a>
+                <a href="#" class="sidebar_nav_link">Settings</a>
+                <a href="#" class="sidebar_nav_link">About</a>
+            </nav>
+            <divider></divider>
+            <div style="padding: 16px;">
+                <button class="btn normal_btn sidebar_btn" id="btn_close_sidebar">Close</button>
+            </div>
+        </div>
+    </display-sidebar>
+
     <dispaly-area>
         <header>
-            <div class="header_item header_item_left header_item_blank"></div>
+            <div class="header_item header_item_left sidebar_toggle_btn" id="btn_toggle_sidebar">
+                <img class="link_img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z'/%3E%3C/svg%3E" alt="" style="height: 24px; width: 24px;"/>
+            </div>
             <div class="header_logo">
                 <div class="header_title">ParaOre-UI</div>
             </div>
-            <div class="header_item header_item_right"></div>
+            <div class="header_item header_item_right">
+                <a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank">
+                    <img class="header_right_icon" src="../images/Github.png" alt="GitHub"/>
+                </a>
+            </div>
         </header>
 
         <display-body>
-            <scroll-view class="main_scroll_view">
+            <scroll-view class="main_scroll_view with_sidebar">
                 <scroll-container class="primary_scroll_container">
                     <main class="scroll_container">
 
@@ -77,59 +104,37 @@
                             </div>
                         </div>
 
-                        <!-- Checkbox -->
+                        <!-- Checkbox (Switch Style) -->
                         <div class="example-section">
-                            <div class="example-title">Checkbox (Pure CSS)</div>
+                            <div class="example-title">Checkbox (Switch Style)</div>
                             <div class="demo-row">
-                                <label class="custom-checkbox-label">
-                                    <div class="custom-checkbox on">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Checked</span>
-                                </label>
-                                <label class="custom-checkbox-label">
-                                    <div class="custom-checkbox">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Unchecked</span>
-                                </label>
-                                <label class="custom-checkbox-label">
-                                    <div class="custom-checkbox disabled">
-                                        <input type="checkbox" disabled>
-                                        <span class="checkmark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Disabled</span>
-                                </label>
+                                <custom-checkbox id="demo_checkbox_1" status="enabled" active="on"></custom-checkbox>
+                                <span style="color: white; margin-left: 8px;">Checked</span>
+                            </div>
+                            <div class="demo-row">
+                                <custom-checkbox id="demo_checkbox_2" status="enabled" active="off"></custom-checkbox>
+                                <span style="color: white; margin-left: 8px;">Unchecked</span>
+                            </div>
+                            <div class="demo-row">
+                                <custom-checkbox id="demo_checkbox_3" status="disabled" active="off"></custom-checkbox>
+                                <span style="color: white; margin-left: 8px;">Disabled</span>
                             </div>
                         </div>
 
-                        <!-- Radio -->
+                        <!-- Radio (Switch Style) -->
                         <div class="example-section">
-                            <div class="example-title">Radio (Pure CSS)</div>
+                            <div class="example-title">Radio (Switch Style)</div>
                             <div class="demo-row">
-                                <label class="custom-radio-label">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="radio-group" checked>
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Option 1</span>
-                                </label>
-                                <label class="custom-radio-label">
-                                    <div class="custom-radio">
-                                        <input type="radio" name="radio-group">
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Option 2</span>
-                                </label>
-                                <label class="custom-radio-label">
-                                    <div class="custom-radio disabled">
-                                        <input type="radio" name="radio-group" disabled>
-                                        <span class="radio-mark"></span>
-                                    </div>
-                                    <span style="color: white; margin-left: 8px;">Disabled</span>
-                                </label>
+                                <custom-radio id="demo_radio_1" name="radio_group" status="enabled" active="on"></custom-radio>
+                                <span style="color: white; margin-left: 8px;">Option 1</span>
+                            </div>
+                            <div class="demo-row">
+                                <custom-radio id="demo_radio_2" name="radio_group" status="enabled" active="off"></custom-radio>
+                                <span style="color: white; margin-left: 8px;">Option 2</span>
+                            </div>
+                            <div class="demo-row">
+                                <custom-radio id="demo_radio_3" name="radio_group" status="disabled" active="off"></custom-radio>
+                                <span style="color: white; margin-left: 8px;">Disabled</span>
                             </div>
                         </div>
 
@@ -235,25 +240,64 @@
     <!-- Import bundled JS -->
     <script type="module" src="../dist/js/paraore-ui.js"></script>
     <script type="module">
-        import { showModal, hideModal } from '../dist/js/paraore-ui.js';
-        
+        import { showModal, hideModal, scrollToTop } from '../dist/js/paraore-ui.js';
+
+        // Sidebar toggle
+        const sidebar = document.getElementById('sidebar');
+        const btnToggleSidebar = document.getElementById('btn_toggle_sidebar');
+        const btnCloseSidebar = document.getElementById('btn_close_sidebar');
+
+        btnToggleSidebar?.addEventListener('click', () => {
+            sidebar?.toggle();
+        });
+
+        btnCloseSidebar?.addEventListener('click', () => {
+            sidebar?.close();
+        });
+
+        // Header logo click to scroll to top (example-specific)
+        document.querySelector('.header_logo')?.addEventListener('click', () => {
+            scrollToTop();
+        });
+
+        // Add animate class to main scroll view on resize (example-specific)
+        const mainScrollView = document.querySelector('.main_scroll_view.with_sidebar');
+        if (mainScrollView) {
+            window.addEventListener('resize', () => {
+                mainScrollView.classList.add('animate');
+            });
+        }
+
         // Bind event listeners
         document.getElementById('btn_open_modal')?.addEventListener('click', () => {
             showModal('demo_modal');
         });
-        
+
         // Bind modal close button
         document.getElementById('btn_close_modal')?.addEventListener('click', () => {
             hideModal('demo_modal');
         });
-        
+
         // Bind modal confirm/cancel buttons
         document.getElementById('btn_modal_confirm')?.addEventListener('click', () => {
             hideModal('demo_modal');
         });
-        
+
         document.getElementById('btn_modal_cancel')?.addEventListener('click', () => {
             hideModal('demo_modal');
+        });
+
+        // Sidebar nav link click handling
+        document.querySelectorAll('.sidebar_nav_link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar_nav_link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                // 在小屏幕上，点击导航项后关闭侧边栏
+                if (window.innerWidth < 1200) {
+                    setTimeout(() => sidebar?.close(), 150);
+                }
+            });
         });
     </script>
 </body>

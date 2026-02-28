@@ -39,7 +39,7 @@ custom-scrollbar.primary_custom_scrollbar {
     border: $border-width-sm solid $color-text-dark;
     box-shadow: inset 0 -4px $color-shadow-dark, inset 0 -7px #F9FAFA, inset 3px 3px #F9FAFA, inset -3px 0 #F9FAFA;
     cursor: pointer;
-    right: 3px;
+    right: 5px;
     width: $scrollbar-thumb-width;
   }
 }
