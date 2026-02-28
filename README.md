@@ -19,6 +19,9 @@
 
 ## Quick Start
 
+> [!CAUTION]
+> **法律风险提示**：我们目前已知的是 Mojang 开源了 OreUI 的状态管理，并不知道 OreUI 样式本身版权状态，此组件库可能存在版权法律问题，**请谨慎使用！**
+
 ### Installation
 
 ```bash
