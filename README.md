@@ -1,10 +1,8 @@
-
-
 <div align="center">
 
-<b>我们仍在开发中，暂时不要使用！</b>  
-<b>我们仍在开发中，暂时不要使用！</b>  
-<b>我们仍在开发中，暂时不要使用！</b>  
+<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
+<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
+<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
 
 # ParaOre-UI
 
@@ -12,15 +10,18 @@
 
 [![npm](https://img.shields.io/npm/v/@ningze/paraore-ui?color=eac54f&style=for-the-badge&label=npm)](https://www.npmjs.com/package/@ningze/paraore-ui)
 [![License](https://img.shields.io/badge/License-MIT-ff69b4?style=for-the-badge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/NingZeStudio/ParaOre-UI?style=for-the-badge&color=blue)](https://github.com/NingZeStudio/ParaOre-UI/stargazers)
 
 </div>
 
 ---
 
-## Quick Start
-
 > [!CAUTION]
 > **法律风险提示**：我们目前已知的是 Mojang 开源了 OreUI 的状态管理，并不知道 OreUI 样式本身版权状态，此组件库可能存在版权法律问题，**请谨慎使用！**
+
+---
+
+## 📦 Quick Start
 
 ### Installation
 
