@@ -1,6 +1,6 @@
 {
     "name": "@ningze/paraore-ui",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "A Minecraft-inspired CSS component library",
     "main": "dist/paraore-ui.css",
     "style": "dist/paraore-ui.css",
