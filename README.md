@@ -1,3 +1,5 @@
+**目前样式实现并不完全，我们仍在开发中，请谨慎使用！**
+
 <div align="center">
 
 # ParaOre-UI
