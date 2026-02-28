@@ -1,4 +1,3 @@
-import './load.js';
 export * from './public_script';
 export * from './components/scroll';
 export * from './components/button';

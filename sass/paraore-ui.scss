@@ -1,4 +1,5 @@
 $paraore-font-path: '../fonts' !default;
+$paraore-image-path: '../images' !default;
 
 @use 'base/variables';
 @use 'base/mixins';
@@ -16,7 +17,6 @@ $paraore-font-path: '../fonts' !default;
 @use 'components/banner-badge';
 @use 'components/divider';
 @use 'components/article';
-@use 'components/loading';
 @use 'components/link-block';
 @use 'components/modal';
 @use 'components/slider';

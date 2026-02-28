@@ -1,6 +1,10 @@
-// OreUI Design Tokens
 
-// Colors
+
+
+$paraore-image-path: '../images' !default;
+$paraore-font-path: '../fonts' !default;
+
+
 $color-background: #48494A;
 $color-background-light: #E6E8EB;
 $color-background-dark: #1E1E1F;
@@ -41,7 +45,7 @@ $color-text-tertiary: rgba(255, 255, 255, 0.4);
 $color-text-dark: #000000;
 $color-text-muted: #8C8D90;
 
-// Fonts
+
 $font-family-primary: "NotoSans Bold", sans-serif;
 $font-family-minecraft-ten: "Minecraft Ten", sans-serif;
 $font-family-minecraft-seven: "Minecraft Seven", sans-serif;
@@ -59,7 +63,7 @@ $font-size-4xl: 24px;
 $font-size-5xl: 28px;
 $font-size-6xl: 30px;
 
-// Spacing
+
 $spacing-xs: 4px;
 $spacing-sm: 6px;
 $spacing-md: 8px;
@@ -69,13 +73,13 @@ $spacing-2xl: 15px;
 $spacing-3xl: 16px;
 $spacing-4xl: 20px;
 
-// Borders
+
 $border-width-sm: 2px;
 $border-width-md: 4px;
 $border-width-lg: 6px;
 $border-style-solid: solid;
 
-// Shadows
+
 $btn-shadow-normal: inset 0 -4px $color-shadow-dark, inset 3px 3px $color-shadow-light, inset -3px -7px $color-shadow-light;
 $btn-shadow-hover: inset 0 -4px $color-shadow-dark, inset 3px 3px $color-shadow-lighter, inset -3px -7px $color-shadow-subtle-hover;
 $btn-shadow-active: inset 3px 3px $color-shadow-lighter, inset -3px -3px $color-shadow-light;
@@ -88,7 +92,7 @@ $btn-shadow-red: inset 0 -4px $color-btn-red-active, inset 3px 3px $color-shadow
 $btn-shadow-red-hover: inset 0 -4px $color-btn-red-active, inset 3px 3px $color-shadow-subtle-hover, inset -3px -7px $color-shadow-subtle-hover;
 $btn-shadow-red-active: inset 3px 3px $color-shadow-subtle-hover, inset -3px -3px $color-shadow-subtle-hover;
 
-// Sizes
+
 $btn-height: 40px;
 $btn-height-active: 36px;
 $btn-width-xs: 100px;
@@ -110,16 +114,16 @@ $scrollbar-thumb-min-height: 35px;
 
 $sidebar-width: 240px;
 
-// Breakpoints
+
 $breakpoint-lg: 1200px;
 
-// Transitions
+
 $transition-fast: 0.3s;
 $transition-normal: 0.6s;
 $transition-slow: 0.8s;
 $transition-slower: 1s;
 
-// Constants
+
 $min-width-app: 330px;
 $header-height: 40px;
 $opacity-overlay: 0.7;

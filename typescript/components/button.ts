@@ -1,5 +1,3 @@
-import { rootPath } from '../types';
-
 export class CustomButton extends HTMLElement {
   status: string = 'normal';
   icon: string = '';
@@ -37,7 +35,7 @@ export class CustomButton extends HTMLElement {
           <div class="btn_with_tooltip_cont">
             <button class="btn ${csize}_btn ${status}_btn" id="${cid}">${text}</button>
             <div class="btn_tooltip">${ctip}</div>
-            <img alt="" class="tip_icon" src="${rootPath}/images/${icon}.png"/>
+            <div class="tip_icon" style="background-image: url('images/${icon}.png')"></div>
           </div>
         `;
       } else {
@@ -63,7 +61,7 @@ export class CustomButton extends HTMLElement {
           try {
             eval(js);
           } catch {
-            // Silently ignore errors
+            // Ignore errors
           }
         });
       }

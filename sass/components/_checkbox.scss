@@ -1,7 +1,7 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-// Checkbox 使用 Switch 开关样式
+
 custom-checkbox {
   display: inline-block;
   margin: 5px;
@@ -32,54 +32,30 @@ custom-checkbox {
 }
 
 .switch_style {
-  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 16px;
   position: absolute;
   top: 3px;
   width: 16px;
 
   &.left {
+    background-image: url('#{$paraore-image-path}/switch_on.png');
     left: 6px;
   }
 
   &.right {
+    background-image: url('#{$paraore-image-path}/switch_off.png');
     right: 7px;
   }
-
-  // 使用 CSS 绘制开关指示器，替代图片
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $color-text-primary;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-  }
-
-  &.left::before {
-    background-color: $color-btn-green;
-  }
-
-  &.right::before {
-    background-color: $color-text-muted;
-  }
-
-  img {
-    height: 16px;
-  }
 }
 
-.disabled_switch .switch_style.left::before {
+.disabled_switch .switch_style.left {
   filter: grayscale(100%) brightness(50%);
 }
 
-.disabled_switch .switch_style.right::before {
-  filter: grayscale(100%) brightness(50%);
+.disabled_switch .switch_style.right {
+  filter: invert(100%) grayscale(100%) brightness(50%);
 }
 
 @keyframes bounce_left {

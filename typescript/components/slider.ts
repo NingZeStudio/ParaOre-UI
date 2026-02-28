@@ -1,5 +1,3 @@
-import { rootPath } from '../types';
-
 export class CustomSlider extends HTMLElement {
   isFirstRender: boolean = true;
 
@@ -129,14 +127,14 @@ export class CustomSlider extends HTMLElement {
     }
 
     function getSliderValue(id: string): number | null {
-      const sliderStorage = JSON.parse(localStorage.getItem(`(${rootPath}/)slider_value`) || '{}');
+      const sliderStorage = JSON.parse(localStorage.getItem(`slider_value`) || '{}');
       return sliderStorage[id] !== undefined ? sliderStorage[id] : null;
     }
 
     function saveSliderValue(): void {
-      const sliderStorage = JSON.parse(localStorage.getItem(`(${rootPath}/)slider_value`) || '{}');
+      const sliderStorage = JSON.parse(localStorage.getItem(`slider_value`) || '{}');
       sliderStorage[sliderId] = currentValue;
-      localStorage.setItem(`(${rootPath}/)slider_value`, JSON.stringify(sliderStorage));
+      localStorage.setItem(`slider_value`, JSON.stringify(sliderStorage));
     }
 
     updateHandle(calculatePosition(currentValue));

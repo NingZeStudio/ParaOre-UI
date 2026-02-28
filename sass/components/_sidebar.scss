@@ -1,11 +1,11 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-// ============================================
-// 侧边栏组件样式
-// ============================================
 
-// 侧边栏容器
+
+
+
+
 display-sidebar {
   background-color: $color-background;
   border-right: $border-width-sm solid $color-border-dark;
@@ -18,7 +18,7 @@ display-sidebar {
   width: $sidebar-width;
   z-index: 100;
 
-  // 默认隐藏
+  
   transform: translateX(-100%);
 
   &.open {
@@ -26,7 +26,7 @@ display-sidebar {
   }
 }
 
-// 侧边栏头部
+
 .sidebar_header {
   align-items: center;
   display: flex;
@@ -42,7 +42,7 @@ display-sidebar {
   font-weight: bold;
 }
 
-// 侧边栏内容区域
+
 .sidebar_content {
   height: calc(100% - #{$header-height});
   overflow-y: auto;
@@ -51,7 +51,7 @@ display-sidebar {
   width: 100%;
 }
 
-// 侧边栏导航
+
 .sidebar_nav {
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ a.sidebar_nav_link {
   }
 }
 
-// 侧边栏功能按钮
+
 .sidebar_btn {
   background-color: $color-background;
   border: $border-width-sm solid $color-border-dark;
@@ -101,13 +101,13 @@ a.sidebar_nav_link {
   }
 }
 
-// 侧边栏内的 divider 样式修正
+
 .sidebar_content divider {
   margin: $spacing-sm 0;
   width: calc(100% - #{$spacing-md * 2});
 }
 
-// 侧边栏遮罩层
+
 .sidebar-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
@@ -123,38 +123,35 @@ a.sidebar_nav_link {
   }
 }
 
-// ============================================
-// 响应式布局
-// ============================================
 
-// 大屏幕（≥1200px）：侧边栏持久显示
+
+
+
+
 @include for-large-screen {
-  display-sidebar.persistent {
-    transform: translateX(0);
+  display-sidebar {
+    transform: translateX(-100%);
 
-    .sidebar_header {
-      display: none;
-    }
-
-    .sidebar_content {
-      height: 100%;
+    &.open {
+      transform: translateX(0);
     }
   }
 
   .main_scroll_view.with_sidebar {
-    margin-left: $sidebar-width;
-    width: calc(100% - $sidebar-width);
-  }
-
-  .sidebar_toggle_btn {
-    display: none;
+    
+    margin-left: 0;
+    width: 100%;
   }
 }
 
-// 小屏幕（<1200px）：侧边栏默认隐藏，通过按钮切换
-@media screen and (max-width: $breakpoint-lg) {
-  display-sidebar.open {
-    transform: translateX(0);
+
+@media screen and (max-width: 1199px) {
+  display-sidebar {
+    transform: translateX(-100%);
+
+    &.open {
+      transform: translateX(0);
+    }
   }
 
   .main_scroll_view.with_sidebar {

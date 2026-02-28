@@ -14,19 +14,19 @@ export class DisplaySidebar extends HTMLElement {
   }
 
   connectedCallback(): void {
-    // 1. 先检查是否为持久化模式
+    
     this.checkPersistent();
     
-    // 2. 渲染内部元素
+    
     this.render();
     
-    // 3. 创建遮罩层
+    
     this.createOverlay();
     
-    // 4. 恢复或设置初始状态
+    
     this.init();
     
-    // 5. 监听窗口大小变化
+    
     window.addEventListener('resize', this.resizeHandler);
   }
 
@@ -87,16 +87,8 @@ export class DisplaySidebar extends HTMLElement {
    * 初始化侧边栏状态
    */
   private init(): void {
-    if (this.isPersistent) {
-      // 持久化模式：始终打开
-      this.setAttribute('open', '');
-    } else {
-      // 非持久化模式：从 localStorage 恢复
-      const saved = localStorage.getItem('sidebar_open');
-      if (saved === 'true') {
-        this.setAttribute('open', '');
-      }
-    }
+    
+    this.removeAttribute('open');
     this.updateState();
   }
 
@@ -104,14 +96,7 @@ export class DisplaySidebar extends HTMLElement {
    * 窗口大小变化处理
    */
   private handleResize(): void {
-    const wasPersistent = this.isPersistent;
     this.checkPersistent();
-
-    // 从小屏幕切换到大屏幕时，打开侧边栏
-    if (!wasPersistent && this.isPersistent) {
-      this.setAttribute('open', '');
-    }
-
     this.updateState();
   }
 
@@ -125,6 +110,7 @@ export class DisplaySidebar extends HTMLElement {
     if (isOpen) {
       this.classList.remove('closed');
       this.classList.add('open');
+      
       if (!this.isPersistent && this.overlay) {
         this.overlay.classList.add('visible');
         document.body.style.overflow = 'hidden';
@@ -148,7 +134,7 @@ export class DisplaySidebar extends HTMLElement {
   private updateMainScrollView(): void {
     const mainScrollView = document.querySelector('.main_scroll_view');
     if (mainScrollView) {
-      if (this.isOpen || this.isPersistent) {
+      if (this.isOpen) {
         mainScrollView.classList.add('with_sidebar');
       } else {
         mainScrollView.classList.remove('with_sidebar');
@@ -168,7 +154,6 @@ export class DisplaySidebar extends HTMLElement {
    * 关闭侧边栏
    */
   close(): void {
-    if (this.isPersistent) return;
     this.removeAttribute('open');
     this.dispatchEvent(new CustomEvent('sidebar-close', { bubbles: true }));
   }

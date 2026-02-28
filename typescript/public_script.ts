@@ -1,11 +1,3 @@
-import { rootPath } from './types';
-
-const currentURL = window.location.href;
-const currentPagePath = window.location.pathname;
-const hostPath = window.location.origin;
-const parts = currentPagePath.split('/').filter(Boolean);
-const slashCount = (currentPagePath.match(/\//g) || []).length;
-
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.body.classList.add('no-dark-mode');
 }

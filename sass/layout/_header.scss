@@ -33,6 +33,7 @@ header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .header_item,
@@ -46,6 +47,7 @@ header {
 .header_item {
   cursor: pointer;
   z-index: 1;
+  pointer-events: auto;
 
   &:hover {
     background-color: #F4F6F9;
@@ -96,16 +98,6 @@ header {
 
 #back.with_menu {
   display: none;
-}
-
-@include for-large-screen {
-  #menu {
-    display: none;
-  }
-
-  #back.with_menu {
-    display: flex;
-  }
 }
 
 .title_icon {

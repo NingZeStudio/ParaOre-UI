@@ -37,11 +37,16 @@ custom-dropdown .disabled_dropdown {
 }
 
 .dropdown_arrow {
-  height: 14px;
+  background-image: url('#{$paraore-image-path}/arrowDown.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 24px;
   pointer-events: none;
   position: absolute;
   right: $spacing-xl;
-  width: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
 }
 
 .disabled_dropdown_arrow {
@@ -78,8 +83,16 @@ custom-dropdown .disabled_dropdown {
 }
 
 .dropdown_checkmark {
-  height: 14px;
-  width: 14px;
+  background-image: url('#{$paraore-image-path}/check_white.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none;
+  height: 24px;
+  width: 24px;
+}
+
+.dropdown_option.selected .dropdown_checkmark {
+  display: block;
 }
 
 .dropdown_container {

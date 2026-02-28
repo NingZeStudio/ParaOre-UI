@@ -12,6 +12,22 @@ export interface SliderData {
   step?: number;
 }
 
-export const rootPath: string = typeof window !== 'undefined' 
-  ? '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '')
+
+
+export const rootPath: string = typeof window !== 'undefined'
+  ? (() => {
+      const pathname = window.location.pathname;
+      const distIndex = pathname.indexOf('/dist/');
+      if (distIndex !== -1) {
+        
+        return pathname.substring(0, distIndex);
+      }
+      
+      
+      const parts = pathname.split('/').filter(Boolean);
+      const depth = parts.length;
+      if (depth === 0) return '';
+      
+      return depth > 1 ? '../'.repeat(depth - 1) + '..' : '..';
+    })()
   : '';

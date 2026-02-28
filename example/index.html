@@ -1,301 +1,477 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParaOre-UI Example</title>
+    <title>ParaOre-UI 示例</title>
     <link rel="stylesheet" href="../dist/paraore-ui.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        .example-section {
+        .demo-section {
+            margin: 20px;
             padding: 20px;
-            border-bottom: 2px solid #333334;
         }
-        .example-title {
+        .demo-title {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #FFFFFF;
+            color: #fff;
+            border-left: 4px solid #2e6be5;
+            padding-left: 12px;
         }
-        .demo-row {
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        .component-row {
             display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .demo-note {
+            background-color: rgba(46, 107, 229, 0.15);
+            border-left: 6px solid #2e6be5;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            border-radius: 0 4px 4px 0;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+        .slider-container {
+            margin: 30px 0;
+            padding: 15px;
+        }
+        h3 {
+            color: #fff;
+            font-size: 16px;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #58585a;
+        }
+        .badge-demo {
+            display: flex;
+            gap: 20px;
             align-items: center;
             flex-wrap: wrap;
+        }
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tag-demo {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 10px;
-        }
-        /* Modal close button X symbol */
-        .close-icon {
-            color: #FFFFFF;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1;
-        }
-        modal_close_btn:hover .close-icon {
-            color: #B1B2B5;
-        }
-        /* Ensure pop_area is on top */
-        .pop_area, pop_area {
-            z-index: 9999 !important;
-        }
-        /* Hide sidebar close button on PC (large screen) */
-        @media screen and (min-width: 1200px) {
-            #btn_close_sidebar {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
+    <!-- 侧边栏 -->
     <display-sidebar id="sidebar">
         <div class="sidebar_header">
             <span class="sidebar_title">ParaOre-UI</span>
         </div>
         <div class="sidebar_content">
             <nav class="sidebar_nav">
-                <a href="#" class="sidebar_nav_link active">Home</a>
-                <a href="#" class="sidebar_nav_link">Components</a>
-                <a href="#" class="sidebar_nav_link">Settings</a>
-                <a href="#" class="sidebar_nav_link">About</a>
+                <a href="#buttons" class="sidebar_nav_link">按钮</a>
+                <a href="#checkbox" class="sidebar_nav_link">复选框</a>
+                <a href="#radio" class="sidebar_nav_link">单选框</a>
+                <a href="#switch" class="sidebar_nav_link">开关</a>
+                <a href="#dropdown" class="sidebar_nav_link">下拉菜单</a>
+                <a href="#slider" class="sidebar_nav_link">滑块</a>
+                <a href="#textfield" class="sidebar_nav_link">文本框</a>
+                <a href="#components" class="sidebar_nav_link">其他组件</a>
             </nav>
             <divider></divider>
-            <div style="padding: 16px;">
-                <button class="btn normal_btn sidebar_btn" id="btn_close_sidebar">Close</button>
-            </div>
+            <button class="btn normal_btn sidebar_btn" id="btn_close_sidebar">关闭侧边栏</button>
         </div>
     </display-sidebar>
 
-    <dispaly-area>
-        <header>
-            <div class="header_item header_item_left sidebar_toggle_btn" id="btn_toggle_sidebar">
-                <img class="link_img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z'/%3E%3C/svg%3E" alt="" style="height: 24px; width: 24px;"/>
-            </div>
-            <div class="header_logo">
-                <div class="header_title">ParaOre-UI</div>
-            </div>
-            <div class="header_item header_item_right">
-                <a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank">
-                    <img class="header_right_icon" src="../images/Github.png" alt="GitHub"/>
-                </a>
-            </div>
-        </header>
+    <!-- 头部 -->
+    <header>
+        <div class="header_item header_item_left sidebar_toggle_btn" id="btn_toggle_sidebar">
+            <img class="header_left_icon" src="Menu.png" alt="菜单"/>
+        </div>
+        <div class="header_logo">
+            <div class="header_title">ParaOre-UI 示例</div>
+        </div>
+        <div class="header_item header_item_right">
+            <a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank">
+                <img class="header_right_icon" src="Github.png" alt="GitHub"/>
+            </a>
+        </div>
+    </header>
 
-        <display-body>
-            <scroll-view class="main_scroll_view with_sidebar">
-                <scroll-container class="primary_scroll_container">
-                    <main class="scroll_container">
+    <!-- 主体内容 -->
+    <scroll-view class="main_scroll_view with_sidebar">
+        <scroll-container class="primary_scroll_container">
+            <main class="scroll_container">
 
-                        <!-- Buttons -->
-                        <div class="example-section">
-                            <div class="example-title">Buttons</div>
-                            <div class="demo-row">
-                                <button class="btn normal_btn small_btn">Normal</button>
-                                <button class="btn green_btn small_btn">Confirm</button>
-                                <button class="btn red_btn small_btn">Cancel</button>
-                                <button class="btn disabled_btn small_btn" disabled>Disabled</button>
-                            </div>
-                            <div class="demo-row">
-                                <button class="btn normal_btn middle_btn">Normal</button>
-                                <button class="btn green_btn middle_btn">Confirm</button>
-                                <button class="btn red_btn middle_btn">Cancel</button>
-                            </div>
+                <!-- 首页大标题区域 -->
+                <div class="main_block">
+                        <img src="Banner.png" alt="ParaOre-UI" style="width: 160px; height: 160px; display: block; margin-bottom: 10px;"/>
+                            <span style="font-size: 48px;">ParaOre-UI</span>
+                            <br/>
+                            <span style="font-size: 20px; color: rgba(255, 255, 255, 0.8);">基于 Mojang OreUI 设计语言的 Web UI 组件库</span>
+                        <div class="component-row" style="margin-top: 10px; justify-content: flex-start;">
+                            <a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank" style="text-decoration: none; box-shadow: none;">
+                                <button class="btn green_btn small_btn">阅读文档</button>
+                            </a>
+                            <a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank" style="text-decoration: none; box-shadow: none;">
+                                <button class="btn normal_btn small_btn">查看仓库</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 按钮示例 -->
+                <article_block id="buttons">
+                    <article_title style="text-align: left;">按钮组件</article_title>
+                    <article_detail>
+                        <h3>基础按钮</h3>
+                        <div class="component-grid">
+                            <button class="btn normal_btn small_btn">普通按钮</button>
+                            <button class="btn green_btn small_btn">确认</button>
+                            <button class="btn red_btn small_btn">取消</button>
+                            <button class="btn disabled_btn small_btn">禁用</button>
                         </div>
 
-                        <!-- Checkbox (Switch Style) -->
-                        <div class="example-section">
-                            <div class="example-title">Checkbox (Switch Style)</div>
-                            <div class="demo-row">
-                                <custom-checkbox id="demo_checkbox_1" status="enabled" active="on"></custom-checkbox>
-                                <span style="color: white; margin-left: 8px;">Checked</span>
-                            </div>
-                            <div class="demo-row">
-                                <custom-checkbox id="demo_checkbox_2" status="enabled" active="off"></custom-checkbox>
-                                <span style="color: white; margin-left: 8px;">Unchecked</span>
-                            </div>
-                            <div class="demo-row">
-                                <custom-checkbox id="demo_checkbox_3" status="disabled" active="off"></custom-checkbox>
-                                <span style="color: white; margin-left: 8px;">Disabled</span>
-                            </div>
+                        <h3>按钮尺寸</h3>
+                        <div class="component-row">
+                            <button class="btn normal_btn extra_small_btn">超小 (100px)</button>
+                            <button class="btn normal_btn small_btn">小 (130px)</button>
+                            <button class="btn normal_btn middle_btn">中 (200px)</button>
+                            <button class="btn normal_btn large_btn">大 (272px)</button>
+                        </div>
+                        <div class="component-row">
+                            <button class="btn normal_btn auto_width_btn">自动宽度</button>
                         </div>
 
-                        <!-- Radio (Switch Style) -->
-                        <div class="example-section">
-                            <div class="example-title">Radio (Switch Style)</div>
-                            <div class="demo-row">
-                                <custom-radio id="demo_radio_1" name="radio_group" status="enabled" active="on"></custom-radio>
-                                <span style="color: white; margin-left: 8px;">Option 1</span>
+                        <div class="demo-note">
+                            <strong>提示：</strong>按钮支持多种尺寸和状态，可通过 CSS 类名控制。
+                            <code>.extra_small_btn</code>, <code>.small_btn</code>, <code>.middle_btn</code>, <code>.large_btn</code>, <code>.auto_width_btn</code>
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 复选框 -->
+                <article_block id="checkbox">
+                    <article_title style="text-align: left;">复选框</article_title>
+                    <article_detail>
+                        <div class="component-row">
+                            <custom-checkbox id="checkbox1" status="enabled" active="on"></custom-checkbox>
+                            <span style="color: #fff;">已选中</span>
+                            <custom-checkbox id="checkbox2" status="enabled" active="off"></custom-checkbox>
+                            <span style="color: #fff;">未选中</span>
+                            <custom-checkbox id="checkbox3" status="disabled" active="on"></custom-checkbox>
+                            <span style="color: #fff;">禁用（选中）</span>
+                        </div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>复选框状态会自动保存到 localStorage，刷新页面后保留。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 单选框 -->
+                <article_block id="radio">
+                    <article_title style="text-align: left;">单选框</article_title>
+                    <article_detail>
+                        <div class="component-row">
+                            <custom-radio id="radio1" name="group1" status="enabled" active="on"></custom-radio>
+                            <span style="color: #fff;">选项 1（选中）</span>
+                            <custom-radio id="radio2" name="group1" status="enabled" active="off"></custom-radio>
+                            <span style="color: #fff;">选项 2</span>
+                            <custom-radio id="radio3" name="group1" status="disabled" active="off"></custom-radio>
+                            <span style="color: #fff;">禁用</span>
+                        </div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>相同 name 的单选框会自动互斥。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 开关 -->
+                <article_block id="switch">
+                    <article_title style="text-align: left;">开关组件</article_title>
+                    <article_detail>
+                        <div class="component-row">
+                            <custom-switch id="switch1" status="enabled" active="on"></custom-switch>
+                            <span style="color: #fff;">开启</span>
+                            <custom-switch id="switch2" status="enabled" active="off"></custom-switch>
+                            <span style="color: #fff;">关闭</span>
+                            <custom-switch id="switch3" status="disabled" active="on"></custom-switch>
+                            <span style="color: #fff;">禁用</span>
+                        </div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>开关支持拖拽和点击两种操作方式。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 下拉菜单 -->
+                <article_block id="dropdown">
+                    <article_title style="text-align: left;">下拉菜单</article_title>
+                    <article_detail>
+                        <div class="component-grid">
+                            <div>
+                                <label class="form-label">可用状态</label>
+                                <custom-dropdown
+                                    id="dropdown1"
+                                    data-option='["苹果","香蕉","橙子","葡萄"]'
+                                    data-selected="1"
+                                    status="enabled">
+                                </custom-dropdown>
                             </div>
-                            <div class="demo-row">
-                                <custom-radio id="demo_radio_2" name="radio_group" status="enabled" active="off"></custom-radio>
-                                <span style="color: white; margin-left: 8px;">Option 2</span>
-                            </div>
-                            <div class="demo-row">
-                                <custom-radio id="demo_radio_3" name="radio_group" status="disabled" active="off"></custom-radio>
-                                <span style="color: white; margin-left: 8px;">Disabled</span>
+                            <div>
+                                <label class="form-label">禁用状态</label>
+                                <custom-dropdown
+                                    id="dropdown2"
+                                    data-option='["选项 A","选项 B","选项 C"]'
+                                    data-selected="2"
+                                    status="disabled">
+                                </custom-dropdown>
                             </div>
                         </div>
-
-                        <!-- Banner -->
-                        <div class="example-section">
-                            <div class="example-title">Banner</div>
-                            <div class="banner neutral_banner">Neutral Banner - General information</div>
-                            <div class="banner information_banner">Information Banner - Important notice</div>
-                            <div class="banner important_banner">Important Banner - Warning message</div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>下拉菜单支持自定义选项和初始值。
                         </div>
+                    </article_detail>
+                </article_block>
 
-                        <!-- Badge -->
-                        <div class="example-section">
-                            <div class="example-title">Badge</div>
-                            <div class="badge_area">
+                <!-- 滑块 -->
+                <article_block id="slider">
+                    <article_title style="text-align: left;">滑块组件</article_title>
+                    <article_detail>
+                        <div class="slider-container">
+                            <label class="form-label">连续滑块（可用）</label>
+                            <custom-slider
+                                id="slider1"
+                                data-slider='{"minValue":0,"maxValue":100,"initialValue":50}'
+                                status="enabled">
+                            </custom-slider>
+                        </div>
+                        <div class="slider-container">
+                            <label class="form-label">分段滑块（禁用）</label>
+                            <custom-slider
+                                id="slider2"
+                                data-slider='{"minValue":0,"maxValue":10,"segments":5,"initialValue":3}'
+                                type="set"
+                                data-show-segments="true"
+                                status="disabled">
+                            </custom-slider>
+                        </div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>滑块支持连续值和分段值两种模式，可通过 <code>type</code> 属性设置。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 文本框 -->
+                <article_block id="textfield">
+                    <article_title style="text-align: left;">文本输入框</article_title>
+                    <article_detail>
+                        <div class="component-grid">
+                            <div>
+                                <label class="form-label">文本输入</label>
+                                <text-field
+                                    id="textfield1"
+                                    type="text"
+                                    hint="请输入文本..."
+                                    status="enabled">
+                                </text-field>
+                            </div>
+                            <div>
+                                <label class="form-label">数字输入</label>
+                                <text-field
+                                    id="textfield2"
+                                    type="number"
+                                    hint="请输入数字..."
+                                    status="disabled">
+                                </text-field>
+                            </div>
+                        </div>
+                        <div class="demo-note">
+                            <strong>提示：</strong>文本框支持多种输入类型：text, number, letter, operator 等。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 其他组件 -->
+                <article_block id="components">
+                    <article_title style="text-align: left;">其他组件</article_title>
+                    <article_detail>
+                        <h3>徽章</h3>
+                        <div class="badge-demo">
+                            <div class="badge-item">
                                 <span class="badge green_badge"></span>
+                                <span style="color: #fff;">绿色</span>
+                            </div>
+                            <div class="badge-item">
                                 <span class="badge blue_badge"></span>
+                                <span style="color: #fff;">蓝色</span>
+                            </div>
+                            <div class="badge-item">
                                 <span class="badge yellow_badge"></span>
+                                <span style="color: #fff;">黄色</span>
+                            </div>
+                            <div class="badge-item">
                                 <span class="badge red_badge"></span>
-                                <span style="color: white; margin-left: 10px;">Status indicators</span>
+                                <span style="color: #fff;">红色</span>
                             </div>
                         </div>
 
-                        <!-- Divider -->
-                        <div class="example-section">
-                            <div class="example-title">Divider</div>
-                            <div style="color: white; margin-bottom: 10px;">Divider styles:</div>
-                            <divider></divider>
-                            <divider-box></divider-box>
-                            <line></line>
+                        <h3>标签</h3>
+                        <div class="tag-demo">
+                            <span class="tag black_tag">黑色标签</span>
+                            <span class="tag green_tag">绿色标签</span>
+                            <span class="tag blue_tag">蓝色标签</span>
+                            <span class="tag yellow_tag">黄色标签</span>
+                            <span class="tag red_tag">红色标签</span>
                         </div>
 
-                        <!-- Tags -->
-                        <div class="example-section">
-                            <div class="example-title">Tags</div>
-                            <div class="demo-row">
-                                <span class="tag black_tag">Default</span>
-                                <span class="tag green_tag">Success</span>
-                                <span class="tag blue_tag">Info</span>
-                                <span class="tag yellow_tag">Warning</span>
-                                <span class="tag red_tag">Error</span>
-                            </div>
-                        </div>
+                        <h3>分割线</h3>
+                        <divider></divider>
+                        <divider-box></divider-box>
+                        <line></line>
 
-                        <!-- Article -->
-                        <div class="example-section">
-                            <div class="example-title">Article</div>
-                            <article_block>
-                                <article_title>Article Title</article_title>
-                                <article_subtitle>Subtitle goes here</article_subtitle>
-                                <article_detail>
-                                    <p>This is the main content of the article. You can add multiple paragraphs here.</p>
-                                    <article_note>Note: This is an important note that should stand out.</article_note>
-                                    <article_list_title>Table of Contents</article_list_title>
-                                    <article_list>First level item</article_list>
-                                    <article_list_l2>Second level item</article_list_l2>
-                                    <article_list_l3>Third level item</article_list_l3>
-                                </article_detail>
-                            </article_block>
-                        </div>
+                        <h3>模态框</h3>
+                        <button class="btn normal_btn" id="btn_open_modal">打开模态框</button>
 
-                        <!-- Modal Demo -->
-                        <div class="example-section">
-                            <div class="example-title">Modal (JavaScript)</div>
-                            <div class="demo-row">
-                                <button class="btn normal_btn small_btn" id="btn_open_modal">Open Modal</button>
-                            </div>
-                        </div>
+                        <div class="overlay" id="overlay_demo_modal"></div>
+                        <modal_area id="demo_modal">
+                            <modal>
+                                <modal_title_area>
+                                    <modal_title>示例模态框</modal_title>
+                                    <modal_close_btn id="btn_close_modal">&times;</modal_close_btn>
+                                </modal_title_area>
+                                <modal_content>
+                                    <p>这是一个模态框示例。</p>
+                                    <p>您可以在这里放置任何内容，比如：</p>
+                                    <div class="component-row">
+                                        <custom-checkbox id="modal_checkbox" status="enabled" active="off"></custom-checkbox>
+                                        <span style="color: #fff;">不再显示</span>
+                                    </div>
+                                </modal_content>
+                                <modal_button_area>
+                                    <button class="btn green_btn modal_custom_btn" id="btn_modal_confirm">确认</button>
+                                    <button class="btn red_btn modal_custom_btn" id="btn_modal_cancel">取消</button>
+                                </modal_button_area>
+                            </modal>
+                        </modal_area>
 
-                    </main>
+                        <h3>文章块</h3>
+                        <article_block>
+                            <article_title>文章标题</article_title>
+                            <article_subtitle>文章副标题</article_subtitle>
+                            <article_date>2024 年 1 月 1 日</article_date>
+                            <article_detail>
+                                <p>这是文章的正文内容。支持标准的 HTML 段落标签。</p>
+                                <article_note>这是一个注释块，用于强调重要信息。</article_note>
+                                <article_list>列表项 1</article_list>
+                                <article_list>列表项 2</article_list>
+                                <article_list>
+                                    列表项 3
+                                    <article_list_l2>子列表项 1</article_list_l2>
+                                    <article_list_l2>子列表项 2</article_list_l2>
+                                </article_list>
+                            </article_detail>
+                        </article_block>
+
+                        <div class="demo-note">
+                            <strong>提示：</strong>模态框需要通过 JavaScript 的 <code>showModal()</code> 和 <code>hideModal()</code> 函数控制。
+                        </div>
+                    </article_detail>
+                </article_block>
+
+                <!-- 底部 -->
+                <div class="main_block">
+                    <div class="main_block_content" style="text-align: center;">
+                        <p>ParaOre-UI v2.0.1 | MIT License</p>
+                        <p>基于 Mojang OreUI 设计语言</p>
+                        <p><a href="https://github.com/NingZeStudio/ParaOre-UI" target="_blank" style="color: #8cb3ff;">GitHub 仓库</a></p>
+                    </div>
+                </div>
+
+            </main>
                 </scroll-container>
                 <custom-scrollbar class="primary_custom_scrollbar">
                     <custom-scrollbar-track></custom-scrollbar-track>
                     <custom-scrollbar-thumb></custom-scrollbar-thumb>
                 </custom-scrollbar>
             </scroll-view>
-        </display-body>
-    </dispaly-area>
 
-    <!-- Demo Modal -->
-    <div class="overlay" id="overlay_demo_modal"></div>
-    <modal_area id="demo_modal">
-        <modal>
-            <modal_title_area>
-                <modal_title>Demo Modal</modal_title>
-                <modal_close_btn id="btn_close_modal">
-                    <span class="close-icon">&times;</span>
-                </modal_close_btn>
-            </modal_title_area>
-            <modal_content>
-                <p style="color: white; padding: 20px;">This is a demo modal dialog.</p>
-                <modal_button_area>
-                    <button class="btn green_btn small_btn" id="btn_modal_confirm">Confirm</button>
-                    <button class="btn red_btn small_btn" id="btn_modal_cancel">Cancel</button>
-                </modal_button_area>
-            </modal_content>
-        </modal>
-    </modal_area>
-
-    <!-- Pop Area -->
-    <pop_area id="pop_area"></pop_area>
-
-    <!-- Import bundled JS -->
-    <script type="module" src="../dist/js/paraore-ui.js"></script>
     <script type="module">
-        import { showModal, hideModal, scrollToTop } from '../dist/js/paraore-ui.js';
+        import { 
+            DisplaySidebar, 
+            showModal, 
+            hideModal, 
+            scrollToTop 
+        } from '../dist/js/paraore-ui.js';
 
-        // Sidebar toggle
+        // 侧边栏控制
         const sidebar = document.getElementById('sidebar');
-        const btnToggleSidebar = document.getElementById('btn_toggle_sidebar');
-        const btnCloseSidebar = document.getElementById('btn_close_sidebar');
+        const btnToggle = document.getElementById('btn_toggle_sidebar');
+        const btnClose = document.getElementById('btn_close_sidebar');
 
-        btnToggleSidebar?.addEventListener('click', () => {
-            sidebar?.toggle();
-        });
+        btnToggle?.addEventListener('click', () => sidebar?.toggle());
+        btnClose?.addEventListener('click', () => sidebar?.close());
 
-        btnCloseSidebar?.addEventListener('click', () => {
-            sidebar?.close();
-        });
+        // 模态框控制
+        const btnOpenModal = document.getElementById('btn_open_modal');
+        const btnCloseModal = document.getElementById('btn_close_modal');
+        const btnModalConfirm = document.getElementById('btn_modal_confirm');
+        const btnModalCancel = document.getElementById('btn_modal_cancel');
 
-        // Header logo click to scroll to top (example-specific)
-        document.querySelector('.header_logo')?.addEventListener('click', () => {
-            scrollToTop();
-        });
-
-        // Add animate class to main scroll view on resize (example-specific)
-        const mainScrollView = document.querySelector('.main_scroll_view.with_sidebar');
-        if (mainScrollView) {
-            window.addEventListener('resize', () => {
-                mainScrollView.classList.add('animate');
-            });
-        }
-
-        // Bind event listeners
-        document.getElementById('btn_open_modal')?.addEventListener('click', () => {
+        btnOpenModal?.addEventListener('click', () => {
             showModal('demo_modal');
         });
 
-        // Bind modal close button
-        document.getElementById('btn_close_modal')?.addEventListener('click', () => {
+        btnCloseModal?.addEventListener('click', () => {
             hideModal('demo_modal');
         });
 
-        // Bind modal confirm/cancel buttons
-        document.getElementById('btn_modal_confirm')?.addEventListener('click', () => {
+        btnModalConfirm?.addEventListener('click', () => {
             hideModal('demo_modal');
         });
 
-        document.getElementById('btn_modal_cancel')?.addEventListener('click', () => {
+        btnModalCancel?.addEventListener('click', () => {
             hideModal('demo_modal');
         });
 
-        // Sidebar nav link click handling
+        // 监听组件事件
+        document.getElementById('checkbox1')?.addEventListener('checkbox-click', (e) => {
+            console.log('复选框状态变化', e);
+        });
+
+        document.getElementById('switch1')?.addEventListener('switch-value-change', (e) => {
+            console.log('开关状态变化', e);
+        });
+
+        document.getElementById('dropdown1')?.addEventListener('dropdown-value-change', (e) => {
+            console.log('下拉菜单选择：', e.detail.value);
+        });
+
+        document.getElementById('slider1')?.addEventListener('slider-value-change', (e) => {
+            console.log('滑块值变化', e);
+        });
+
+        // 侧边栏导航链接点击后关闭侧边栏（小屏幕）
         document.querySelectorAll('.sidebar_nav_link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.querySelectorAll('.sidebar_nav_link').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                // 在小屏幕上，点击导航项后关闭侧边栏
+            link.addEventListener('click', () => {
                 if (window.innerWidth < 1200) {
-                    setTimeout(() => sidebar?.close(), 150);
+                    sidebar?.close();
                 }
             });
         });

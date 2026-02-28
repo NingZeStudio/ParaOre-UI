@@ -178,7 +178,7 @@ function bindScrollEvents(
     showScroll(customScrollbar);
   }, 100);
 
-  // Handle wheel events on the container for immediate scroll response
+  
   container.addEventListener('wheel', () => {
     throttledUpdateAndShowScroll();
   }, { passive: true });

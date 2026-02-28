@@ -26,30 +26,29 @@
 }
 
 .switch_style {
-  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 16px;
   position: absolute;
   top: 3px;
   width: 16px;
 
   &.left {
+    background-image: url('#{$paraore-image-path}/switch_on.png');
     left: 6px;
   }
 
   &.right {
+    background-image: url('#{$paraore-image-path}/switch_off.png');
     right: 7px;
-  }
-
-  img {
-    height: $icon-width-md;
   }
 }
 
-.disabled_switch .switch_style.left img {
+.disabled_switch .switch_style.left {
   filter: grayscale(100%) brightness(50%);
 }
 
-.disabled_switch .switch_style.right img {
+.disabled_switch .switch_style.right {
   filter: invert(100%) grayscale(100%) brightness(50%);
 }
 

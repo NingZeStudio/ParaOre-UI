@@ -1,5 +1,3 @@
-import { rootPath } from '../types';
-
 export class CustomSwitch extends HTMLElement {
   beforeToggle: ((element: HTMLElement) => boolean) | null = null;
   isSwitchOn: boolean = false;
@@ -29,8 +27,8 @@ export class CustomSwitch extends HTMLElement {
     this.innerHTML = `
       <div class="switch_content">
         <div class="switch ${this.isSwitchOn ? 'on' : 'off'} ${this.isSwitchDisabled ? 'disabled_switch' : 'normal_switch'}">
-          <div class="switch_style left"><img alt="" src="${rootPath}/images/switch_on.png"/></div>
-          <div class="switch_style right"><img alt="" src="${rootPath}/images/switch_off.png"/></div>
+          <div class="switch_style left"></div>
+          <div class="switch_style right"></div>
           <div class="switch_slider can_click"></div>
         </div>
       </div>
@@ -135,9 +133,9 @@ export class CustomSwitch extends HTMLElement {
     switchElement?.classList.toggle('on', isOn);
     switchElement?.classList.toggle('off', !isOn);
 
-    const switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`) || '{}');
+    const switchValues = JSON.parse(localStorage.getItem(`switch_value`) || '{}');
     switchValues[this.id] = isOn ? 'on' : 'off';
-    localStorage.setItem(`(${rootPath}/)switch_value`, JSON.stringify(switchValues));
+    localStorage.setItem(`switch_value`, JSON.stringify(switchValues));
 
     if (switchSlider) {
       if (isOn) {
@@ -159,7 +157,7 @@ export class CustomSwitch extends HTMLElement {
   }
 
   getSwitchValue(): string {
-    const switchValues = JSON.parse(localStorage.getItem(`(${rootPath}/)switch_value`) || '{}');
+    const switchValues = JSON.parse(localStorage.getItem(`switch_value`) || '{}');
     if (this.id in switchValues) {
       return switchValues[this.id];
     }

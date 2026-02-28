@@ -1,5 +1,3 @@
-import { rootPath } from '../types';
-
 export class CustomRadio extends HTMLElement {
   beforeToggle: ((element: HTMLElement) => boolean) | null = null;
   isRadioOn: boolean = false;
@@ -79,20 +77,20 @@ export class CustomRadio extends HTMLElement {
       const handleClick = (): void => {
         if (!this.shouldAllowToggle()) return;
 
-        // 如果是单选组，需要先关闭同组其他选项
+        
         if (this.radioGroup) {
           const radioGroupElements = document.querySelectorAll(`custom-radio[name="${this.radioGroup}"]`);
           radioGroupElements.forEach((radio) => {
             if (radio !== this) {
-              // 直接设置属性并更新渲染，不使用 updateRadioState 避免重复写入 localStorage
+              
               radio.setAttribute('active', 'off');
               radio.isRadioOn = false;
               radio.updateRender();
+
               
-              // 更新 localStorage
-              const radioValues = JSON.parse(localStorage.getItem(`(${rootPath}/)radio_value`) || '{}');
+              const radioValues = JSON.parse(localStorage.getItem(`radio_value`) || '{}');
               radioValues[radio.id] = 'off';
-              localStorage.setItem(`(${rootPath}/)radio_value`, JSON.stringify(radioValues));
+              localStorage.setItem(`radio_value`, JSON.stringify(radioValues));
             }
           });
         }
@@ -113,9 +111,9 @@ export class CustomRadio extends HTMLElement {
     switchElement?.classList.toggle('on', isOn);
     switchElement?.classList.toggle('off', !isOn);
 
-    const radioValues = JSON.parse(localStorage.getItem(`(${rootPath}/)radio_value`) || '{}');
+    const radioValues = JSON.parse(localStorage.getItem(`radio_value`) || '{}');
     radioValues[this.id] = isOn ? 'on' : 'off';
-    localStorage.setItem(`(${rootPath}/)radio_value`, JSON.stringify(radioValues));
+    localStorage.setItem(`radio_value`, JSON.stringify(radioValues));
 
     if (switchSlider) {
       if (isOn) {
@@ -142,7 +140,7 @@ export class CustomRadio extends HTMLElement {
   }
 
   getRadioValue(): string {
-    const radioValues = JSON.parse(localStorage.getItem(`(${rootPath}/)radio_value`) || '{}');
+    const radioValues = JSON.parse(localStorage.getItem(`radio_value`) || '{}');
     if (this.id in radioValues) {
       return radioValues[this.id];
     }

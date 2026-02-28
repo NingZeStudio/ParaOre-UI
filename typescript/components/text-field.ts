@@ -232,13 +232,13 @@ export class TextField extends HTMLElement {
   }
 
   saveTextFieldValue(): void {
-    const storageKey = `(${rootPath}/)text_field_value`;
+    const storageKey = `text_field_value`;
     let storedData: Record<string, string> = {};
 
     try {
       storedData = JSON.parse(localStorage.getItem(storageKey) || '{}');
     } catch {
-      // Silently ignore errors
+      // Ignore errors
     }
 
     if (!this.inputField) return;
@@ -260,18 +260,18 @@ export class TextField extends HTMLElement {
     try {
       localStorage.setItem(storageKey, JSON.stringify(storedData));
     } catch {
-      // Silently ignore errors
+      // Ignore errors
     }
   }
 
   getTextFieldValue(): void {
-    const storageKey = `(${rootPath}/)text_field_value`;
+    const storageKey = `text_field_value`;
     let storedData: Record<string, string> = {};
 
     try {
       storedData = JSON.parse(localStorage.getItem(storageKey) || '{}');
     } catch {
-      // Silently ignore errors
+      // Ignore errors
     }
 
     const keyInStoredData = this.classList[0];
@@ -286,6 +286,5 @@ export class TextField extends HTMLElement {
   }
 }
 
-const rootPath = typeof window !== 'undefined' ? '/' + (window.location.pathname.split('/').filter(Boolean).length > 0 ? window.location.pathname.split('/').filter(Boolean)[0] : '') : '';
 
 customElements.define('text-field', TextField);

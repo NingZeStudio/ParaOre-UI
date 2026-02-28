@@ -1,11 +1,9 @@
-import { rootPath } from '../types';
-
 export class CustomDropdown extends HTMLElement {
   margin: number = 6;
   optionsData: string[] = [];
   selectedValue: string | null = null;
   label: HTMLDivElement | null = null;
-  arrow: HTMLImageElement | null = null;
+  arrow: HTMLDivElement | null = null;
   dropdownOptions: HTMLDivElement | null = null;
   storageKey: string = '';
 
@@ -18,9 +16,9 @@ export class CustomDropdown extends HTMLElement {
     this.label.classList.add('dropdown_label');
     this.appendChild(this.label);
 
-    this.arrow = document.createElement('img');
+    
+    this.arrow = document.createElement('div');
     this.arrow.classList.add('dropdown_arrow');
-    this.arrow.src = rootPath + '/images/arrowDown.png';
     this.appendChild(this.arrow);
 
     this.dropdownOptions = document.createElement('div');
@@ -31,12 +29,12 @@ export class CustomDropdown extends HTMLElement {
       const option = document.createElement('div');
       option.classList.add('dropdown_option');
       option.setAttribute('data-value', (index + 1).toString());
-      option.innerHTML = `${labelText} <img alt="" class="dropdown_checkmark" src="${rootPath}/images/check_white.png">`;
+      option.innerHTML = `${labelText} <div class="dropdown_checkmark"></div>`;
       option.addEventListener('click', () => this.selectOption(option));
       this.dropdownOptions?.appendChild(option);
     });
 
-    this.storageKey = `(${rootPath}/)dropdown_value`;
+    this.storageKey = `dropdown_value`;
     const storedData = this.getStoredDropdownData();
     this.selectedValue = storedData[this.id] || this.selectedValue;
 
@@ -117,10 +115,7 @@ export class CustomDropdown extends HTMLElement {
     this.dropdownOptions.querySelectorAll('.dropdown_option').forEach(option => {
       const isSelected = option.getAttribute('data-value') === this.selectedValue;
       option.classList.toggle('selected', isSelected);
-      const checkmark = option.querySelector('.dropdown_checkmark') as HTMLImageElement;
-      if (checkmark) {
-        checkmark.style.display = isSelected ? 'block' : 'none';
-      }
+      
     });
   }
 

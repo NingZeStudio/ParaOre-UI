@@ -1,5 +1,3 @@
-import { rootPath } from '../types';
-
 export class CustomCheckbox extends HTMLElement {
   beforeToggle: ((element: HTMLElement) => boolean) | null = null;
   isCheckboxOn: boolean = false;
@@ -91,9 +89,9 @@ export class CustomCheckbox extends HTMLElement {
     switchElement?.classList.toggle('on', isOn);
     switchElement?.classList.toggle('off', !isOn);
 
-    const checkboxValues = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
+    const checkboxValues = JSON.parse(localStorage.getItem(`checkbox_value`) || '{}');
     checkboxValues[this.id] = isOn ? 'on' : 'off';
-    localStorage.setItem(`(${rootPath}/)checkbox_value`, JSON.stringify(checkboxValues));
+    localStorage.setItem(`checkbox_value`, JSON.stringify(checkboxValues));
 
     if (switchSlider) {
       if (isOn) {
@@ -120,7 +118,7 @@ export class CustomCheckbox extends HTMLElement {
   }
 
   getCheckboxValue(): string {
-    const checkboxValues = JSON.parse(localStorage.getItem(`(${rootPath}/)checkbox_value`) || '{}');
+    const checkboxValues = JSON.parse(localStorage.getItem(`checkbox_value`) || '{}');
     if (this.id in checkboxValues) {
       return checkboxValues[this.id];
     }
