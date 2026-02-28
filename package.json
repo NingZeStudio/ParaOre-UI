@@ -1,6 +1,6 @@
 {
     "name": "@ningze/paraore-ui",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "A Minecraft-inspired CSS component library",
     "main": "dist/paraore-ui.css",
     "style": "dist/paraore-ui.css",
@@ -28,7 +28,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Spectrollay/OreUI.git"
+        "url": "git+https://github.com/NingZeStudio/ParaOre-UI.git"
     },
     "keywords": [
         "oreui",
@@ -46,9 +46,9 @@
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Spectrollay/OreUI/issues"
+        "url": "https://github.com/NingZeStudio/ParaOre-UI/issue"
     },
-    "homepage": "https://spectrollay.github.io/OreUI",
+    "homepage": "https://github.com/NingZeStudio/ParaOre-UI",
     "devDependencies": {
         "@eslint/js": "^10.0.1",
         "@typescript-eslint/eslint-plugin": "^8.56.1",
