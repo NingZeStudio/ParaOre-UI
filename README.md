@@ -128,6 +128,6 @@ MIT License
 
 ## Links
 
-- GitHub: https://github.com/Spectrollay/OreUI
+- 参考项目：https://github.com/Spectrollay/OreUI
 - npm: https://www.npmjs.com/package/@ningze/paraore-ui
 - Author: JanePHPDev (@JanePHPDev) - NingZeStudio
