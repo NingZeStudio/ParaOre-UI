@@ -18,23 +18,34 @@ npm install @ningze/paraore-ui
 @use '@ningze/paraore-ui';
 ```
 
-### JavaScript/TypeScript
+### JavaScript
 ```html
 <script type="module">
   import { showModal, hideModal, scrollToTop, openLink } from '@ningze/paraore-ui/dist/js/paraore-ui.js';
-  
+
   // Modal usage
   showModal('modal-id');
   hideModal('modal-id');
-  
+
   // Scroll utilities
   scrollToTop();  // Smooth scroll to top
   toTop();        // Instant scroll to top
-  
+
   // Navigation utilities
   openLink('https://example.com');
   launchApplication('myapp://path');
 </script>
+```
+
+### TypeScript (with full type support)
+```typescript
+import { showModal, hideModal, CustomButton, DisplaySidebar } from '@ningze/paraore-ui';
+
+// 完整的 TypeScript 类型提示
+showModal('modal-id');
+
+const sidebar = document.getElementById('sidebar') as DisplaySidebar;
+sidebar?.toggle();
 ```
 
 ## Components
@@ -254,10 +265,13 @@ npm install @ningze/paraore-ui
 ## Build Commands
 
 ```bash
-npm run build        # Build for production
-npm run build:dev    # Build with source maps
-npm run build:css    # Build CSS only
-npm run build:js     # Build JS only
+npm run build        # Build CSS + JS + Types (production)
+npm run build:css    # Build CSS only (compressed)
+npm run build:js     # Build JS only (bundled)
+npm run build:types  # Build TypeScript declarations
+npm run build:dev    # Build CSS + JS (development with source maps)
+npm run dev-css      # Build CSS with source maps
+npm run dev-js       # Build JS with source maps
 npm run watch        # Watch mode
 npm run lint         # ESLint check
 ```
@@ -274,6 +288,11 @@ npm run publish:npm
 - **CSS-only components**: Buttons, banners, badges, dividers, etc.
 - **Web Components**: Checkbox, radio, dropdown, scrollbar, sidebar, modal, etc.
 - **Utility functions**: `showModal()`, `hideModal()`, `scrollToTop()`, etc.
+
+### TypeScript Support
+- Full type declarations included in the npm package
+- Import directly from `@ningze/paraore-ui` in TypeScript projects
+- Type definitions located at `dist/types/`
 
 ### Responsive Design
 - Large screen (≥1200px): Sidebar is persistent, toggle button hidden

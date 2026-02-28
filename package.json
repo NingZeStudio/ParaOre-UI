@@ -6,6 +6,7 @@
     "style": "dist/paraore-ui.css",
     "sass": "sass/paraore-ui.scss",
     "module": "dist/js/paraore-ui.js",
+    "types": "dist/types/index.d.ts",
     "files": [
         "dist",
         "sass",
@@ -13,9 +14,10 @@
         "images"
     ],
     "scripts": {
-        "build": "npm run build:css && npm run build:js",
+        "build": "npm run build:css && npm run build:js && npm run build:types",
         "build:css": "sass sass/paraore-ui.scss dist/paraore-ui.css --style compressed --no-source-map",
         "build:js": "node esbuild.config.js",
+        "build:types": "tsc",
         "build:dev": "npm run dev-css && npm run dev-js",
         "dev-css": "sass sass/paraore-ui.scss dist/paraore-ui.css --style expanded --source-map",
         "dev-js": "node esbuild.config.js --dev",

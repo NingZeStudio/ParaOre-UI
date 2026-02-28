@@ -82,12 +82,13 @@ export class CustomRadio extends HTMLElement {
           const radioGroupElements = document.querySelectorAll(`custom-radio[name="${this.radioGroup}"]`);
           radioGroupElements.forEach((radio) => {
             if (radio !== this) {
-              
-              radio.setAttribute('active', 'off');
-              radio.isRadioOn = false;
-              radio.updateRender();
+              const customRadio = radio as CustomRadio;
 
-              
+              radio.setAttribute('active', 'off');
+              customRadio.isRadioOn = false;
+              customRadio.updateRender();
+
+
               const radioValues = JSON.parse(localStorage.getItem(`radio_value`) || '{}');
               radioValues[radio.id] = 'off';
               localStorage.setItem(`radio_value`, JSON.stringify(radioValues));

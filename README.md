@@ -45,12 +45,21 @@ npm install @ningze/paraore-ui
 </script>
 ```
 
+#### TypeScript (with type support)
+```typescript
+import { showModal, CustomButton, DisplaySidebar } from '@ningze/paraore-ui';
+
+// 完整的 TypeScript 类型提示支持
+showModal('modal-id');
+```
+
 ### Build
 
 ```bash
-npm run build        # Build CSS + JS (production)
+npm run build        # Build CSS + JS + Types (production)
 npm run build:css    # Build CSS only (compressed)
 npm run build:js     # Build JS only (bundled)
+npm run build:types  # Build TypeScript declarations
 npm run build:dev    # Build CSS + JS (development with source maps)
 npm run dev-css      # Build CSS with source maps
 npm run dev-js       # Build JS with source maps
@@ -121,6 +130,10 @@ ParaOre-UI/
 │   ├── load.ts
 │   └── index.ts           # Main entry
 ├── dist/                  # Built files
+│   ├── js/                # Bundled JavaScript
+│   ├── types/             # TypeScript declarations (.d.ts)
+│   ├── paraore-ui.css     # Compiled CSS
+│   └── fonts/, images/    # Assets
 ├── fonts/                 # Custom fonts
 ├── images/                # Image assets
 ├── example/               # Demo pages
