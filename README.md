@@ -1,12 +1,13 @@
 <div align="center">
 
-<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
-<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
-<b>⚠️ 我们仍在开发中，暂时不要使用！</b>  
+<b>我们仍在开发中，暂时不要使用！</b>  
+<b>我们仍在开发中，暂时不要使用！</b>  
+<b>我们仍在开发中，暂时不要使用！</b>  
 
 # ParaOre-UI
 
-### A Minecraft-inspired Sass/CSS Component Library
+### A Sass/CSS component library based on the Mojang OreUI design language
+### *一款基于 Mojang OreUI 设计语言的 Sass/CSS 组件库*
 
 [![npm](https://img.shields.io/npm/v/@ningze/paraore-ui?color=eac54f&style=for-the-badge&label=npm)](https://www.npmjs.com/package/@ningze/paraore-ui)
 [![License](https://img.shields.io/badge/License-MIT-ff69b4?style=for-the-badge)](LICENSE)
@@ -21,7 +22,7 @@
 
 ---
 
-## 📦 Quick Start
+## Quick Start
 
 ### Installation
 
