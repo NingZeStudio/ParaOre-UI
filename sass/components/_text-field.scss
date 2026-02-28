@@ -1,0 +1,76 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.text_field_container {
+  display: flex;
+  height: auto;
+  margin: $spacing-sm;
+}
+
+text-field {
+  align-self: center;
+  display: block;
+  flex: 1;
+  margin: $spacing-sm 0;
+  min-height: 40px;
+  position: relative;
+}
+
+.disabled_text_field {
+  cursor: not-allowed;
+}
+
+.input {
+  background-color: #313233;
+  border: $border-width-sm solid $color-border-dark;
+  box-shadow: inset 0 4px #242425;
+  box-sizing: border-box;
+  caret-color: $color-green;
+  color: $color-text-primary;
+  cursor: text;
+  font-family: $font-family-primary;
+  height: max(100%, 40px);
+  min-height: 40px;
+  outline: none;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+  padding: $spacing-lg $spacing-lg 11px $spacing-lg;
+  resize: none;
+  touch-action: pan-y;
+  width: 100%;
+}
+
+.disabled_text_field .input {
+  background-color: $color-btn-disabled;
+  border: $border-width-sm solid $color-btn-disabled-border;
+  box-shadow: inset 0 4px $color-border-accent;
+  color: $color-background;
+  pointer-events: none;
+}
+
+.input::selection {
+  background-color: rgba($color-green, 0.5);
+}
+
+.hint {
+  color: $color-border-accent;
+  font-size: $font-size-sm;
+  height: 23px;
+  left: $spacing-lg;
+  pointer-events: none;
+  position: absolute;
+  top: 11px;
+  transition: opacity 0.2s ease;
+}
+
+.disabled_text_field .hint {
+  color: $color-background;
+}
+
+.text_field_container custom-button {
+  align-self: center;
+}
+
+.input_btn {
+  width: 120px;
+}

@@ -1,0 +1,67 @@
+{
+    "name": "@ningze/paraore-ui",
+    "version": "2.0.0",
+    "description": "A Minecraft-inspired CSS component library",
+    "main": "dist/paraore-ui.css",
+    "style": "dist/paraore-ui.css",
+    "sass": "sass/paraore-ui.scss",
+    "module": "dist/js/paraore-ui.js",
+    "files": [
+        "dist",
+        "sass",
+        "fonts",
+        "images"
+    ],
+    "scripts": {
+        "build": "npm run build:css && npm run build:js",
+        "build:css": "sass sass/paraore-ui.scss dist/paraore-ui.css --style compressed --no-source-map",
+        "build:js": "node esbuild.config.js",
+        "build:dev": "npm run dev-css && npm run dev-js",
+        "dev-css": "sass sass/paraore-ui.scss dist/paraore-ui.css --style expanded --source-map",
+        "dev-js": "node esbuild.config.js --dev",
+        "watch": "sass sass/paraore-ui.scss dist/paraore-ui.css --style expanded --source-map --watch",
+        "clean": "rm -rf dist/*.css dist/*.map dist/js dist/types",
+        "lint": "eslint typescript/**/*.ts",
+        "lint:fix": "eslint typescript/**/*.ts --fix",
+        "prepublishOnly": "npm run build",
+        "publish:npm": "npm publish --access public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Spectrollay/OreUI.git"
+    },
+    "keywords": [
+        "oreui",
+        "minecraft",
+        "ui",
+        "css",
+        "sass",
+        "component",
+        "webui",
+        "ningze"
+    ],
+    "author": {
+        "name": "JanePHPDev",
+        "organization": "NingZeStudio"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Spectrollay/OreUI/issues"
+    },
+    "homepage": "https://spectrollay.github.io/OreUI",
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@typescript-eslint/eslint-plugin": "^8.56.1",
+        "@typescript-eslint/parser": "^8.56.1",
+        "esbuild": "^0.27.3",
+        "eslint": "^10.0.2",
+        "eslint-config-prettier": "^10.1.8",
+        "sass": "^1.69.0",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.56.1"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    }
+}

@@ -1,0 +1,129 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+header {
+  align-items: center;
+  background-color: $color-background-light;
+  border-bottom: $border-width-md solid $color-border-accent;
+  display: flex;
+  height: $header-height;
+  justify-content: space-between;
+  min-width: $min-width-app;
+  position: relative;
+  z-index: 10;
+}
+
+.header_left {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.header_right {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.header_logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header_item,
+.header_logo {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.header_item {
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background-color: #F4F6F9;
+  }
+
+  &:active {
+    background-color: $color-btn-normal;
+  }
+}
+
+.header_item_left {
+  border-right: 2px solid $color-border-gray;
+  box-shadow: inset -2px 0 $color-border-white;
+  width: 42px;
+}
+
+.header_item_right {
+  border-left: 2px solid $color-border-white;
+  box-shadow: inset 2px 0 $color-border-gray;
+  width: 42px;
+}
+
+.header_item_blank {
+  border: 0;
+  box-shadow: unset;
+  cursor: default;
+  pointer-events: none;
+  width: 44px;
+
+  &:hover,
+  &:active {
+    background-color: unset;
+  }
+}
+
+.header_left_icon,
+.header_right_icon {
+  height: $icon-width-xl;
+}
+
+.header_left_icon {
+  padding: $spacing-xs $spacing-sm $spacing-xs $spacing-xs;
+}
+
+.header_right_icon {
+  padding: $spacing-xs $spacing-xs $spacing-xs $spacing-sm;
+}
+
+#back.with_menu {
+  display: none;
+}
+
+@include for-large-screen {
+  #menu {
+    display: none;
+  }
+
+  #back.with_menu {
+    display: flex;
+  }
+}
+
+.title_icon {
+  padding: 0 $spacing-xl;
+  width: $icon-width-lg;
+}
+
+.header_logo {
+  flex: 1;
+  width: 100%;
+}
+
+.header_title {
+  align-items: center;
+  display: flex;
+  font-family: $font-family-minecraft-ten;
+  font-size: $font-size-6xl;
+  justify-content: center;
+  line-height: 1;
+  height: 38px;
+}

@@ -1,0 +1,103 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+custom-scrollbar {
+  display: block;
+  opacity: 1;
+  overflow-y: hidden;
+  position: absolute;
+  right: 0;
+  transition: opacity $transition-slower;
+}
+
+custom-scrollbar-track {
+  display: block;
+  overflow-y: hidden;
+  position: absolute;
+}
+
+custom-scrollbar-thumb {
+  display: block;
+  min-height: $scrollbar-thumb-min-height;
+  overflow-y: hidden;
+  position: absolute;
+}
+
+custom-scrollbar.primary_custom_scrollbar {
+  width: $scrollbar-width-primary;
+
+  custom-scrollbar-track {
+    background-color: $color-shadow-dark;
+    height: calc(100% - 16px);
+    right: $spacing-lg;
+    top: $spacing-lg;
+    width: $scrollbar-track-width;
+  }
+
+  custom-scrollbar-thumb {
+    background-color: $color-background-light;
+    border: $border-width-sm solid $color-text-dark;
+    box-shadow: inset 0 -4px $color-shadow-dark, inset 0 -7px #F9FAFA, inset 3px 3px #F9FAFA, inset -3px 0 #F9FAFA;
+    cursor: pointer;
+    right: 3px;
+    width: $scrollbar-thumb-width;
+  }
+}
+
+custom-scrollbar.secondary_custom_scrollbar {
+  height: 100%;
+  top: 0;
+  width: $scrollbar-width-secondary;
+
+  custom-scrollbar-track {
+    background-color: transparent;
+    height: 100%;
+    right: 6px;
+    top: 0;
+    width: $scrollbar-track-width;
+  }
+
+  custom-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 0;
+    box-shadow: unset;
+    cursor: default;
+    right: 4px;
+    width: 10px;
+  }
+}
+
+scroll-view {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+scroll-container {
+  display: grid;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  @include hide-scrollbar;
+  width: 100%;
+}
+
+.scroll_container {
+  width: 100%;
+}
+
+.main_scroll_view {
+  &.animate {
+    transition: margin-left $transition-normal, width $transition-normal;
+  }
+
+  @include for-large-screen {
+    &.with_sidebar {
+      margin-left: $sidebar-width;
+      width: calc(100% - $sidebar-width);
+    }
+  }
+}

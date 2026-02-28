@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParaOre-UI Example</title>
+    <link rel="stylesheet" href="../dist/paraore-ui.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .example-section {
+            padding: 20px;
+            border-bottom: 2px solid #333334;
+        }
+        .example-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+        .demo-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .demo-label {
+            color: #FFFFFF;
+            min-width: 80px;
+        }
+        /* Modal close button X symbol */
+        .close-icon {
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        modal_close_btn:hover .close-icon {
+            color: #B1B2B5;
+        }
+        /* Ensure pop_area is on top */
+        .pop_area, pop_area {
+            z-index: 9999 !important;
+        }
+    </style>
+</head>
+<body>
+    <dispaly-area>
+        <header>
+            <div class="header_item header_item_left header_item_blank"></div>
+            <div class="header_logo">
+                <div class="header_title">ParaOre-UI</div>
+            </div>
+            <div class="header_item header_item_right"></div>
+        </header>
+
+        <display-body>
+            <scroll-view class="main_scroll_view">
+                <scroll-container class="primary_scroll_container">
+                    <main class="scroll_container">
+
+                        <!-- Buttons -->
+                        <div class="example-section">
+                            <div class="example-title">Buttons</div>
+                            <div class="demo-row">
+                                <button class="btn normal_btn small_btn">Normal</button>
+                                <button class="btn green_btn small_btn">Confirm</button>
+                                <button class="btn red_btn small_btn">Cancel</button>
+                                <button class="btn disabled_btn small_btn" disabled>Disabled</button>
+                            </div>
+                            <div class="demo-row">
+                                <button class="btn normal_btn middle_btn">Normal</button>
+                                <button class="btn green_btn middle_btn">Confirm</button>
+                                <button class="btn red_btn middle_btn">Cancel</button>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="example-section">
+                            <div class="example-title">Checkbox (Pure CSS)</div>
+                            <div class="demo-row">
+                                <label class="custom-checkbox-label">
+                                    <div class="custom-checkbox on">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Checked</span>
+                                </label>
+                                <label class="custom-checkbox-label">
+                                    <div class="custom-checkbox">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Unchecked</span>
+                                </label>
+                                <label class="custom-checkbox-label">
+                                    <div class="custom-checkbox disabled">
+                                        <input type="checkbox" disabled>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Disabled</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Radio -->
+                        <div class="example-section">
+                            <div class="example-title">Radio (Pure CSS)</div>
+                            <div class="demo-row">
+                                <label class="custom-radio-label">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="radio-group" checked>
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Option 1</span>
+                                </label>
+                                <label class="custom-radio-label">
+                                    <div class="custom-radio">
+                                        <input type="radio" name="radio-group">
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Option 2</span>
+                                </label>
+                                <label class="custom-radio-label">
+                                    <div class="custom-radio disabled">
+                                        <input type="radio" name="radio-group" disabled>
+                                        <span class="radio-mark"></span>
+                                    </div>
+                                    <span style="color: white; margin-left: 8px;">Disabled</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Banner -->
+                        <div class="example-section">
+                            <div class="example-title">Banner</div>
+                            <div class="banner neutral_banner">Neutral Banner - General information</div>
+                            <div class="banner information_banner">Information Banner - Important notice</div>
+                            <div class="banner important_banner">Important Banner - Warning message</div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="example-section">
+                            <div class="example-title">Badge</div>
+                            <div class="badge_area">
+                                <span class="badge green_badge"></span>
+                                <span class="badge blue_badge"></span>
+                                <span class="badge yellow_badge"></span>
+                                <span class="badge red_badge"></span>
+                                <span style="color: white; margin-left: 10px;">Status indicators</span>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="example-section">
+                            <div class="example-title">Divider</div>
+                            <div style="color: white; margin-bottom: 10px;">Divider styles:</div>
+                            <divider></divider>
+                            <divider-box></divider-box>
+                            <line></line>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="example-section">
+                            <div class="example-title">Tags</div>
+                            <div class="demo-row">
+                                <span class="tag black_tag">Default</span>
+                                <span class="tag green_tag">Success</span>
+                                <span class="tag blue_tag">Info</span>
+                                <span class="tag yellow_tag">Warning</span>
+                                <span class="tag red_tag">Error</span>
+                            </div>
+                        </div>
+
+                        <!-- Article -->
+                        <div class="example-section">
+                            <div class="example-title">Article</div>
+                            <article_block>
+                                <article_title>Article Title</article_title>
+                                <article_subtitle>Subtitle goes here</article_subtitle>
+                                <article_detail>
+                                    <p>This is the main content of the article. You can add multiple paragraphs here.</p>
+                                    <article_note>Note: This is an important note that should stand out.</article_note>
+                                    <article_list_title>Table of Contents</article_list_title>
+                                    <article_list>First level item</article_list>
+                                    <article_list_l2>Second level item</article_list_l2>
+                                    <article_list_l3>Third level item</article_list_l3>
+                                </article_detail>
+                            </article_block>
+                        </div>
+
+                        <!-- Modal Demo -->
+                        <div class="example-section">
+                            <div class="example-title">Modal (JavaScript)</div>
+                            <div class="demo-row">
+                                <button class="btn normal_btn small_btn" id="btn_open_modal">Open Modal</button>
+                            </div>
+                        </div>
+
+                    </main>
+                </scroll-container>
+                <custom-scrollbar class="primary_custom_scrollbar">
+                    <custom-scrollbar-track></custom-scrollbar-track>
+                    <custom-scrollbar-thumb></custom-scrollbar-thumb>
+                </custom-scrollbar>
+            </scroll-view>
+        </display-body>
+    </dispaly-area>
+
+    <!-- Demo Modal -->
+    <div class="overlay" id="overlay_demo_modal"></div>
+    <modal_area id="demo_modal">
+        <modal>
+            <modal_title_area>
+                <modal_title>Demo Modal</modal_title>
+                <modal_close_btn id="btn_close_modal">
+                    <span class="close-icon">&times;</span>
+                </modal_close_btn>
+            </modal_title_area>
+            <modal_content>
+                <p style="color: white; padding: 20px;">This is a demo modal dialog.</p>
+                <modal_button_area>
+                    <button class="btn green_btn small_btn" id="btn_modal_confirm">Confirm</button>
+                    <button class="btn red_btn small_btn" id="btn_modal_cancel">Cancel</button>
+                </modal_button_area>
+            </modal_content>
+        </modal>
+    </modal_area>
+
+    <!-- Pop Area -->
+    <pop_area id="pop_area"></pop_area>
+
+    <!-- Import bundled JS -->
+    <script type="module" src="../dist/js/paraore-ui.js"></script>
+    <script type="module">
+        import { showModal, hideModal } from '../dist/js/paraore-ui.js';
+        
+        // Bind event listeners
+        document.getElementById('btn_open_modal')?.addEventListener('click', () => {
+            showModal('demo_modal');
+        });
+        
+        // Bind modal close button
+        document.getElementById('btn_close_modal')?.addEventListener('click', () => {
+            hideModal('demo_modal');
+        });
+        
+        // Bind modal confirm/cancel buttons
+        document.getElementById('btn_modal_confirm')?.addEventListener('click', () => {
+            hideModal('demo_modal');
+        });
+        
+        document.getElementById('btn_modal_cancel')?.addEventListener('click', () => {
+            hideModal('demo_modal');
+        });
+    </script>
+</body>
+</html>

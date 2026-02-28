@@ -1,0 +1,107 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.switch_content {
+  margin: $spacing-sm;
+}
+
+.switch {
+  cursor: pointer;
+  height: 24px;
+  overflow: visible;
+  position: relative;
+  width: 58px;
+}
+
+.normal_switch {
+  background: linear-gradient(to right, $color-btn-green 50%, $color-border-accent 50%);
+  border: $border-width-sm solid $color-border-dark;
+  box-shadow: inset 2px 2px $color-shadow-subtle, inset -2px -2px $color-shadow-subtle-light;
+}
+
+.disabled_switch {
+  background-color: $color-btn-disabled;
+  border: $border-width-sm solid $color-btn-disabled-border;
+  cursor: not-allowed;
+}
+
+.switch_style {
+  background-color: transparent;
+  height: 16px;
+  position: absolute;
+  top: 3px;
+  width: 16px;
+
+  &.left {
+    left: 6px;
+  }
+
+  &.right {
+    right: 7px;
+  }
+
+  img {
+    height: $icon-width-md;
+  }
+}
+
+.disabled_switch .switch_style.left img {
+  filter: grayscale(100%) brightness(50%);
+}
+
+.disabled_switch .switch_style.right img {
+  filter: invert(100%) grayscale(100%) brightness(50%);
+}
+
+@keyframes bounce_left {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+  48% { transform: translateX(-2px); }
+  52% { transform: translateX(0); }
+}
+
+@keyframes bounce_right {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+  48% { transform: translateX(2px); }
+  52% { transform: translateX(0); }
+}
+
+.switch_bounce_left {
+  animation: bounce_right 175ms ease-in-out 2;
+}
+
+.switch_bounce_right {
+  animation: bounce_left 175ms ease-in-out 2;
+}
+
+.switch_slider {
+  background-color: $color-btn-normal;
+  height: 28px;
+  left: -2px;
+  position: absolute;
+  top: -6px;
+  transition: left 125ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 28px;
+  z-index: 1;
+}
+
+.normal_switch .switch_slider {
+  border: $border-width-sm solid $color-border-dark;
+  box-shadow: $btn-shadow-normal;
+}
+
+.disabled_switch .switch_slider {
+  border: $border-width-sm solid $color-btn-disabled-border;
+  box-shadow: inset 0 -4px $color-border-accent;
+}
+
+.normal_switch .switch_slider:hover,
+.normal_switch .switch_slider:active,
+.normal_switch .switch:hover .switch_slider,
+.normal_switch .switch_slider.active {
+  background-color: $color-btn-normal-hover;
+  box-shadow: $btn-shadow-hover;
+}
+
+.switch.on .switch_slider {
+  left: 28px;
+}

@@ -1,0 +1,34 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+divider {
+  background-color: $color-shadow-dark;
+  display: block;
+  height: 2px;
+  margin: $spacing-sm 0;
+  width: 100%;
+}
+
+divider-box {
+  box-shadow: inset 0 2px $color-border-dark, inset 0 -2px $color-border-light;
+  display: block;
+  height: 4px;
+  margin: $spacing-sm 0;
+  width: 100%;
+}
+
+line {
+  background-color: $color-background;
+  display: block;
+  height: 2px;
+  margin: 1px 0;
+  width: 100%;
+}
+
+vertical-line {
+  background-color: $color-border-white;
+  display: inline-block;
+  height: 100%;
+  margin: 0 $spacing-sm;
+  width: 2px;
+}

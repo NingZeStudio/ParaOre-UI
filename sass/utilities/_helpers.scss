@@ -1,0 +1,28 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+link-block {
+}
+
+.link_title {
+}
+
+.link_title_text {
+}
+
+.link_description {
+}
+
+.image_load_error {
+}
+
+.display {
+}
+
+.main_scroll_view.with_sidebar {
+  @media screen and (min-width: $breakpoint-lg) {
+    .animate {
+      transition: margin-left $transition-normal, width $transition-normal;
+    }
+  }
+}

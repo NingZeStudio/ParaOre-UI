@@ -1,0 +1,147 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+modal_area {
+  border: $border-width-sm solid $color-border-dark;
+  display: none;
+  left: 50%;
+  max-width: calc(min(600px, 100vw));
+  min-width: 320px;
+  outline: none;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+
+.normal_modal {
+  z-index: 14;
+}
+
+#alert_modal {
+  z-index: 16;
+}
+
+#first_visit_today_modal {
+  z-index: 18;
+}
+
+#compatibility_modal {
+  z-index: 20;
+}
+
+#status_modal {
+  z-index: 100;
+}
+
+modal {
+  background-color: #313233;
+  color: $color-text-primary;
+  display: block;
+  text-align: center;
+}
+
+modal_title_area {
+  background-color: $color-background;
+  box-shadow: inset 2px 2px $color-shadow-subtle, inset -2px -2px $color-shadow-subtle-light;
+  display: block;
+  font-size: $font-size-xl;
+  height: 40px;
+  position: relative;
+}
+
+modal_title {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: calc(50% - 1px);
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+modal_close_btn {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: calc(100% - 8px);
+  justify-content: center;
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+
+  &:hover,
+  &:active {
+    background-color: $color-shadow-dark;
+  }
+}
+
+.modal_close_btn_img {
+  height: $icon-width-md;
+  width: $icon-width-md;
+}
+
+modal_content {
+  display: grid;
+  align-items: center;
+  max-height: calc(min(450px, calc(90vh - 150px)));
+  min-height: 60px;
+  overflow-y: auto;
+  padding: $spacing-lg;
+  scrollbar-width: none;
+}
+
+modal_checkbox_area {
+  align-items: center;
+  background-color: $color-background;
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-top: $border-width-sm solid $color-border-light;
+  cursor: pointer;
+  display: flex;
+  justify-content: left;
+  padding: 2px;
+}
+
+modal_button_area {
+  align-items: center;
+  background-color: $color-background;
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-top: $border-width-sm solid $color-border-light;
+  display: flex;
+  justify-content: center;
+  padding: 2px 0;
+}
+
+modal_textfield_area {
+  background-color: $color-background;
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-top: $border-width-sm solid $color-border-light;
+  display: block;
+  padding: 2px 0;
+  text-align: left;
+}
+
+modal_textfield_title {
+  margin: $spacing-lg;
+}
+
+.modal_custom_btn {
+  width: 100%;
+}
+
+modal_button_group {
+  width: calc(100% - 20px);
+}
+
+modal_button_list {
+  align-items: center;
+  display: flex;
+}
+
+.modal_btn {
+  width: calc(100% - 10px);
+}

@@ -1,0 +1,127 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+article_block {
+  display: block;
+  min-width: 270px;
+  text-align: center;
+  width: 90%;
+}
+
+article_title {
+  color: $color-text-primary;
+  display: block;
+  font-family: $font-family-minecraft-seven;
+  font-size: $font-size-3xl;
+  height: auto;
+  margin: $spacing-2xl;
+}
+
+article_date,
+article_subtitle {
+  display: block;
+  font-family: $font-family-minecraft-seven;
+  font-size: $font-size-xl;
+  height: auto;
+  margin: $spacing-lg;
+}
+
+article_detail {
+  display: block;
+  font-family: $font-family-primary;
+  margin: 0 $spacing-sm;
+  text-align: left;
+}
+
+article_note {
+  background-color: rgba($color-blue, 0.1);
+  border-left: $border-width-lg solid $color-blue;
+  display: block;
+  font-size: $font-size-base;
+  font-weight: bold;
+  margin: $spacing-sm 0;
+  padding: $spacing-lg;
+}
+
+article_list_title {
+  background-color: rgba($color-border-white, 0.05);
+  border-left: $border-width-lg solid $color-border-white;
+  display: block;
+  font-size: $font-size-lg;
+  margin: $spacing-lg 0;
+  padding: $spacing-xs 0 $spacing-xs $spacing-lg;
+}
+
+article_list {
+  display: block;
+  margin: $spacing-lg 0;
+  padding-left: $spacing-xl;
+  position: relative;
+
+  &:before {
+    background-color: $color-border-white;
+    content: '';
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+  }
+}
+
+article_list_l2 {
+  display: block;
+  margin: $spacing-lg 0;
+  padding-left: 32px;
+  position: relative;
+
+  &:before {
+    background-color: $color-border-white;
+    content: '';
+    height: 6px;
+    left: $spacing-xl;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+  }
+}
+
+article_list_l3 {
+  display: block;
+  margin: $spacing-lg 0;
+  padding-left: 48px;
+  position: relative;
+
+  &:before {
+    border: 2px solid $color-border-white;
+    box-sizing: border-box;
+    content: '';
+    height: 6px;
+    left: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+  }
+}
+
+article_list_l4 {
+  display: block;
+  margin: $spacing-lg 0;
+  padding-left: 60px;
+  position: relative;
+
+  &:before {
+    border: 2px solid $color-border-white;
+    box-sizing: border-box;
+    content: '';
+    height: 6px;
+    left: 48px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+  }
+}

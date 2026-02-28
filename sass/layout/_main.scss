@@ -1,0 +1,126 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+main {
+  color: $color-text-primary;
+  min-width: $min-width-app;
+  width: 100vw;
+}
+
+.main {
+  align-items: center;
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-left: $border-width-sm solid $color-border-dark;
+  border-right: $border-width-sm solid $color-border-dark;
+  border-top: $border-width-sm solid $color-border-light;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  min-height: 66px;
+  padding: $spacing-md 0;
+  text-align: center;
+}
+
+.main-header,
+.main-footer {
+  font-family: $font-family-minecraft-ten;
+}
+
+.main_title {
+  align-items: center;
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-left: 0;
+  border-right: 0;
+  display: flex;
+  font-family: $font-family-minecraft-seven;
+  justify-content: center;
+  min-height: 70px;
+  text-align: center;
+}
+
+.main_title_area {
+  margin: $spacing-lg 0;
+}
+
+.main_title_span {
+  font-size: $font-size-4xl;
+}
+
+.main_title_span_main {
+  font-family: $font-family-minecraft-ten;
+  font-size: $font-size-5xl;
+  margin: $spacing-md 0;
+}
+
+.main_title_span_sub {
+  font-size: $font-size-4xl;
+  margin: $spacing-xs 0;
+}
+
+.main_block {
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-left: 0;
+  border-right: 0;
+  border-top: $border-width-sm solid $color-border-light;
+  font-family: $font-family-primary;
+  min-height: 60px;
+  padding: 0 $spacing-xl;
+}
+
+.main_block_content {
+  margin: $spacing-md;
+}
+
+.block {
+  border-bottom: $border-width-sm solid $color-border-dark;
+  border-left: $border-width-sm solid $color-border-dark;
+  border-right: $border-width-sm solid $color-border-dark;
+  border-top: $border-width-sm solid $color-border-light;
+  margin: 0 $spacing-4xl;
+}
+
+.main_content_center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.main_detail_center {
+  font-size: $font-size-2xl;
+  text-align: center;
+}
+
+.block_spacing {
+  height: $spacing-4xl;
+}
+
+.page_info_title,
+.page_info {
+  font-family: $font-family-primary;
+  font-size: $font-size-xs;
+  margin-left: $spacing-4xl;
+}
+
+.page_info_title {
+  color: $color-text-secondary;
+}
+
+.page_info {
+  color: $color-text-tertiary;
+}
+
+.loading_icon {
+  height: $icon-width-xl;
+  padding: $spacing-lg;
+  width: $icon-width-xl;
+}
+
+.coming_soon-img {
+  height: 80px;
+}
+
+.notice_img {
+  width: 280px;
+}

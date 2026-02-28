@@ -1,0 +1,97 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.custom-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  background-color: $color-border-accent;
+  border: $border-width-sm solid $color-border-dark;
+  box-shadow: inset 2px 2px $color-shadow-subtle, inset -2px -2px $color-shadow-subtle-light;
+  cursor: pointer;
+  height: 20px;
+  position: relative;
+  width: 20px;
+  display: inline-block;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: $color-btn-normal-hover;
+  }
+
+  &:active {
+    background-color: $color-shadow-dark;
+  }
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  .checkmark {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkmark::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid $color-text-primary;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  &.on {
+    background-color: $color-btn-green;
+
+    &:hover {
+      background-color: $color-btn-green-hover;
+    }
+
+    &:active {
+      background-color: $color-btn-green-active;
+    }
+
+    .checkmark {
+      display: block;
+    }
+  }
+
+  &.disabled {
+    background-color: $color-btn-disabled;
+    border: $border-width-sm solid $color-btn-disabled-border;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &:hover,
+    &:active {
+      background-color: $color-btn-disabled;
+      border: $border-width-sm solid $color-btn-disabled-border;
+      box-shadow: none;
+    }
+
+    input[type='checkbox'] {
+      cursor: not-allowed;
+    }
+
+    &.on .checkmark::before {
+      border-color: $color-text-muted;
+    }
+  }
+}

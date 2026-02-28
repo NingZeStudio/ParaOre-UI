@@ -1,0 +1,64 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.badge_area {
+  align-items: center;
+  display: flex;
+}
+
+.badge {
+  height: 6px;
+  margin-right: $spacing-sm;
+  width: 6px;
+}
+
+.green_badge {
+  background-color: $color-green;
+}
+
+.blue_badge {
+  background-color: $color-blue-light;
+}
+
+.yellow_badge {
+  background-color: $color-yellow;
+}
+
+.red_badge {
+  background-color: $color-red;
+}
+
+.banner_area {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  align-items: center;
+  color: $color-text-primary;
+  display: flex;
+  font-family: $font-family-primary;
+  hyphens: auto;
+  justify-content: center;
+  margin: $spacing-2xl $spacing-4xl;
+  min-height: 30px;
+  padding: $spacing-lg;
+  text-align: center;
+  width: calc(100% - 80px);
+  word-wrap: break-word;
+}
+
+.neutral_banner {
+  background-color: $color-border-dark;
+}
+
+.information_banner {
+  background-color: $color-blue;
+}
+
+.important_banner {
+  background-color: $color-yellow;
+  color: $color-text-dark;
+  font-weight: bolder;
+}

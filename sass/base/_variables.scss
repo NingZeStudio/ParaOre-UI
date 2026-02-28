@@ -1,0 +1,125 @@
+// OreUI Design Tokens
+
+// Colors
+$color-background: #48494A;
+$color-background-light: #E6E8EB;
+$color-background-dark: #1E1E1F;
+
+$color-border-light: #5A5B5C;
+$color-border-dark: #333334;
+$color-border-accent: #B1B2B5;
+$color-border-white: #FFFFFF;
+$color-border-gray: #A1A3A5;
+
+$color-btn-normal: #D0D1D4;
+$color-btn-normal-hover: #B1B2B5;
+$color-btn-green: #3C8527;
+$color-btn-green-hover: #2A641C;
+$color-btn-green-active: #1D4D13;
+$color-btn-red: #C33636;
+$color-btn-red-hover: #C02D2D;
+$color-btn-red-active: #AD1D1D;
+$color-btn-disabled: #D0D1D4;
+$color-btn-disabled-border: #8C8D90;
+
+$color-shadow-dark: #58585A;
+$color-shadow-light: rgba(255, 255, 255, 0.6);
+$color-shadow-lighter: rgba(255, 255, 255, 0.8);
+$color-shadow-subtle: rgba(255, 255, 255, 0.2);
+$color-shadow-subtle-hover: rgba(255, 255, 255, 0.4);
+$color-shadow-subtle-light: rgba(255, 255, 255, 0.1);
+
+$color-blue: #2E6BE5;
+$color-blue-light: #8CB3FF;
+$color-yellow: #FFE866;
+$color-red: #F46D6D;
+$color-green: #6CC349;
+
+$color-text-primary: #FFFFFF;
+$color-text-secondary: rgba(255, 255, 255, 0.8);
+$color-text-tertiary: rgba(255, 255, 255, 0.4);
+$color-text-dark: #000000;
+$color-text-muted: #8C8D90;
+
+// Fonts
+$font-family-primary: "NotoSans Bold", sans-serif;
+$font-family-minecraft-ten: "Minecraft Ten", sans-serif;
+$font-family-minecraft-seven: "Minecraft Seven", sans-serif;
+$font-family-minecraft-five: "Minecraft Five", sans-serif;
+$font-family-minecraft-five-bold: "Minecraft Five Bold", sans-serif;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 17px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 21px;
+$font-size-4xl: 24px;
+$font-size-5xl: 28px;
+$font-size-6xl: 30px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 6px;
+$spacing-md: 8px;
+$spacing-lg: 10px;
+$spacing-xl: 12px;
+$spacing-2xl: 15px;
+$spacing-3xl: 16px;
+$spacing-4xl: 20px;
+
+// Borders
+$border-width-sm: 2px;
+$border-width-md: 4px;
+$border-width-lg: 6px;
+$border-style-solid: solid;
+
+// Shadows
+$btn-shadow-normal: inset 0 -4px $color-shadow-dark, inset 3px 3px $color-shadow-light, inset -3px -7px $color-shadow-light;
+$btn-shadow-hover: inset 0 -4px $color-shadow-dark, inset 3px 3px $color-shadow-lighter, inset -3px -7px $color-shadow-subtle-hover;
+$btn-shadow-active: inset 3px 3px $color-shadow-lighter, inset -3px -3px $color-shadow-light;
+
+$btn-shadow-green: inset 0 -4px $color-btn-green-active, inset 3px 3px $color-shadow-subtle, inset -3px -7px $color-shadow-subtle-light;
+$btn-shadow-green-hover: inset 0 -4px $color-btn-green-active, inset 3px 3px $color-shadow-subtle-hover, inset -3px -7px $color-shadow-subtle-hover;
+$btn-shadow-green-active: inset 3px 3px $color-shadow-subtle-hover, inset -3px -3px $color-shadow-subtle-hover;
+
+$btn-shadow-red: inset 0 -4px $color-btn-red-active, inset 3px 3px $color-shadow-subtle, inset -3px -7px $color-shadow-subtle-light;
+$btn-shadow-red-hover: inset 0 -4px $color-btn-red-active, inset 3px 3px $color-shadow-subtle-hover, inset -3px -7px $color-shadow-subtle-hover;
+$btn-shadow-red-active: inset 3px 3px $color-shadow-subtle-hover, inset -3px -3px $color-shadow-subtle-hover;
+
+// Sizes
+$btn-height: 40px;
+$btn-height-active: 36px;
+$btn-width-xs: 100px;
+$btn-width-sm: 130px;
+$btn-width-md: 200px;
+$btn-width-lg: 272px;
+$btn-width-xl: 140px;
+
+$icon-width-sm: 14px;
+$icon-width-md: 20px;
+$icon-width-lg: 30px;
+$icon-width-xl: 32px;
+
+$scrollbar-width-primary: 22px;
+$scrollbar-width-secondary: 18px;
+$scrollbar-track-width: 6px;
+$scrollbar-thumb-width: 12px;
+$scrollbar-thumb-min-height: 35px;
+
+$sidebar-width: 240px;
+
+// Breakpoints
+$breakpoint-lg: 1200px;
+
+// Transitions
+$transition-fast: 0.3s;
+$transition-normal: 0.6s;
+$transition-slow: 0.8s;
+$transition-slower: 1s;
+
+// Constants
+$min-width-app: 330px;
+$header-height: 40px;
+$opacity-overlay: 0.7;

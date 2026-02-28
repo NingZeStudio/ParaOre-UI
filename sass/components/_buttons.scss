@@ -1,0 +1,127 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  @include btn-base;
+}
+
+.btn:active:not(.disabled_btn) {
+  @include btn-active;
+}
+
+.extra_small_btn {
+  width: $btn-width-xs;
+}
+
+.small_btn {
+  width: $btn-width-sm;
+}
+
+.middle_btn {
+  width: $btn-width-md;
+}
+
+.large_btn {
+  width: $btn-width-lg;
+}
+
+.normal_btn {
+  @include btn-normal;
+}
+
+.green_btn {
+  @include btn-green;
+}
+
+.red_btn {
+  @include btn-red;
+}
+
+.disabled_btn {
+  @include btn-disabled;
+}
+
+.button_img {
+  width: $icon-width-sm;
+
+  &.left {
+    margin-right: $spacing-xs;
+  }
+
+  &.right {
+    margin-left: $spacing-xs;
+  }
+}
+
+.link_img,
+.link_img_black {
+  height: $icon-width-sm;
+  margin-bottom: -1.5px;
+  padding-right: $spacing-sm;
+  width: $icon-width-sm;
+}
+
+.sidebar_btn {
+  background-color: $color-background;
+  border: $border-width-sm solid #131313;
+  box-shadow: inset -1px -1px $color-border-dark, inset 1px 1px $color-border-dark, inset -2px -2px #313233, inset 2px 2px #6D6D6E;
+  color: $color-text-primary;
+  height: $btn-height;
+  margin: $spacing-sm;
+  padding-bottom: $spacing-xs;
+  width: $btn-width-xl;
+
+  &:hover,
+  &:active {
+    background-color: #67686A;
+    border: $border-width-sm solid $color-border-white;
+    box-shadow: unset;
+    height: $btn-height;
+    margin: $spacing-sm;
+    padding-bottom: $spacing-xs;
+  }
+}
+
+.btn_group {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_with_tooltip_cont {
+  display: inline-block;
+  position: relative;
+}
+
+.btn_tooltip {
+  background-color: $color-border-dark;
+  color: $color-text-primary;
+  opacity: 0;
+  padding: $spacing-sm;
+  position: absolute;
+  right: $spacing-xl;
+  text-align: center;
+  top: -30px;
+  transition: opacity $transition-normal;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.btn_with_tooltip_cont:hover .btn_tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tip_icon {
+  height: $icon-width-md;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}

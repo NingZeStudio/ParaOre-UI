@@ -1,0 +1,37 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.tag_area {
+  align-items: center;
+}
+
+.tag {
+  color: $color-text-dark;
+  display: inline-flex;
+  font-size: $font-size-xs;
+  margin-right: 5px;
+  padding: 0 2px;
+  text-wrap: nowrap;
+  vertical-align: 10%;
+}
+
+.black_tag {
+  background-color: $color-border-dark;
+  color: $color-text-primary;
+}
+
+.green_tag {
+  background-color: $color-green;
+}
+
+.blue_tag {
+  background-color: $color-blue-light;
+}
+
+.yellow_tag {
+  background-color: $color-yellow;
+}
+
+.red_tag {
+  background-color: $color-red;
+}

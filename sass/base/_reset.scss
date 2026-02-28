@@ -1,0 +1,121 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+$paraore-font-path: '../fonts' !default;
+
+:root {
+  color-scheme: light !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light !important;
+  }
+}
+
+@font-face {
+  font-family: 'Minecraft Ten';
+  src: url('#{$paraore-font-path}/Minecraft-Ten.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Minecraft Seven';
+  src: url('#{$paraore-font-path}/Minecraft-Seven.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Minecraft Five Bold';
+  src: url('#{$paraore-font-path}/Minecraft-Five-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Minecraft Five';
+  src: url('#{$paraore-font-path}/Minecraft-Five.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NotoSans Bold';
+  src: url('#{$paraore-font-path}/NotoSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSans BoldItalic';
+  src: url('#{$paraore-font-path}/NotoSans-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSans Italic';
+  src: url('#{$paraore-font-path}/NotoSans-Italic.ttf') format('truetype');
+}
+
+::selection {
+  background-color: transparent;
+  color: inherit;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  font-family: $font-family-primary;
+  height: 100%;
+  overscroll-behavior: contain;
+}
+
+.flex {
+  display: flex;
+}
+
+.wrap_flex {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body {
+  background-color: $color-background;
+  height: 100%;
+  margin: 0;
+  min-width: $min-width-app;
+  overflow: hidden;
+  position: relative;
+  @include hide-scrollbar;
+  -webkit-user-select: none;
+}
+
+dispaly-area {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+display-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+a {
+  box-shadow: inset 0 -2px 0 0 currentColor;
+  color: inherit;
+  position: relative;
+  text-decoration: none;
+}
+
+del-line {
+  text-decoration: line-through;
+}
+
+.overlay {
+  @include overlay;
+  z-index: 11;
+}
+
+.overlay_main {
+  @include overlay;
+  z-index: 9;
+}
