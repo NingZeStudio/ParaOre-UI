@@ -1,12 +1,6 @@
-<div align="right">
-
-简体中文 | <a href="/README-en_US.md">English</a>
-
-</div>
-
 <div align="center">
 
-# ✨ ParaOre-UI
+# ParaOre-UI
 
 ### A Minecraft-inspired Sass/CSS Component Library
 
